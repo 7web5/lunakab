@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <title>LunaKAB — Problem</title>
+  <meta name="description" content="The LunaKAB problem brief: client, requirements, constraints, key challenges and missions." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/problem.css" />
+</head>
+<body class="doc-page">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div id="vignette" aria-hidden="true"></div>
+  <div id="scanline" aria-hidden="true"></div>
+  <span class="corner tl"></span><span class="corner tr"></span>
+  <span class="corner bl"></span><span class="corner br"></span>
+
+  <header class="doc-top">
+    <a class="mark" href="index.html#problem" aria-label="Back to the mission">
+      <img class="mark-icon" src="assets/logo-mark.svg" alt="" />
+      <span class="mark-text">
+        <span class="mark-title">LUNA<span class="kab">KAB</span></span>
+        <span class="mark-sub">NASA HUNCH</span>
+      </span>
+    </a>
+    <a class="doc-back" href="index.html#problem"><span aria-hidden="true">←</span> RETURN TO MISSION</a>
+  </header>
+
+  <nav class="doc-toc" aria-label="On this page">
+    <a href="#statement"><i>01</i>PROBLEM</a>
+    <a href="#client"><i>02</i>CLIENT</a>
+    <a href="#requirements"><i>03</i>REQUIREMENTS</a>
+    <a href="#constraints"><i>04</i>CONSTRAINTS</a>
+    <a href="#challenges"><i>05</i>CHALLENGES</a>
+    <a href="#missions"><i>06</i>MISSIONS</a>
+  </nav>
+
+  <main class="doc">
+    <section class="doc-hero" id="statement">
+      <span class="eyebrow">02 / PROBLEM</span>
+      <h1>From landing pad<br />to habitat</h1>
+      <p class="lede">Once a ~40&nbsp;ft cargo module lands on the lunar surface, it must be moved from the landing pad — kept away from the habitat to avoid plume contamination — to the supply building and docked to a pressurized port, without human EVA involvement wherever possible.</p>
+      <dl class="facts">
+        <div><dt>Module</dt><dd>~40 ft cargo module</dd></div>
+        <div><dt>Alternates</dt><dd>20 ft container + 4 ft pods</dd></div>
+        <div><dt>Geometry</dt><dd>Rectangular prisms or cylinders</dd></div>
+      </dl>
+    </section>
+
+    <section class="doc-sec" id="client">
+      <h2><i>02</i>Client</h2>
+      <ul class="client">
+        <li><span>NASA HUNCH</span><small>Kennedy Space Center</small></li>
+        <li><span>NASA Robotics</span><small>Marshall Habitation</small></li>
+      </ul>
+    </section>
+
+    <section class="doc-sec" id="requirements">
+      <h2><i>03</i>Requirements</h2>
+      <ol class="spec">
+        <li>Handle a module mass equivalent in 1/6&nbsp;g (may be scaled for an Earth demo)</li>
+        <li>Navigate unprepared lunar regolith terrain</li>
+        <li>Include a dust-exclusion coupling at the habitat dock (~1–2&nbsp;m opening)</li>
+        <li>Operate autonomously, with human override capability</li>
+        <li>Use a solar + battery power architecture</li>
+        <li>Require no human EVA for nominal transport operation</li>
+      </ol>
+    </section>
+
+    <section class="doc-sec" id="constraints">
+      <h2><i>04</i>Major constraints</h2>
+      <ol class="spec caution">
+        <li>Regolith is abrasive and clings electrostatically — all seals and joints must account for it</li>
+        <li>The plume blast zone means the module lands far from the habitat, so the robot must traverse a significant distance</li>
+        <li>1/6&nbsp;g means lighter loads but also lower traction for wheeled or tracked systems</li>
+        <li>The docking interface must seal to the habitat pressure boundary before the module hatch opens</li>
+      </ol>
+    </section>
+
+    <section class="doc-sec" id="challenges">
+      <h2><i>05</i>Key challenges</h2>
+      <ol class="spec">
+        <li>Designing a gripper or cradle that handles an irregular cylindrical load</li>
+        <li>Pushing the robot to butt against a straight surface (simulated airlock)</li>
+        <li>Budgeting power for a long-distance traverse with a heavy load</li>
+        <li>Avoiding tipping instability when carrying an elevated load in low gravity</li>
+      </ol>
+    </section>
+
+    <section class="doc-sec" id="missions">
+      <h2><i>06</i>Missions</h2>
+
+      <h3 class="tier">Basic operations <span>M01 — M06</span></h3>
+      <div class="missions">
+        <article class="mission">
+          <span class="m-n">M01</span>
+          <h4><button type="button" class="m-open">First Drive: Leave the Landing Zone</button></h4>
+          <p>Demonstrate that the robot can safely start, stop, turn, reverse, and travel from a simulated lunar lander across an uneven lunar surface. The robot must reach a designated staging area without striking the lander, cargo, or obstacles.</p>
+        </article>
+        <article class="mission">
+          <span class="m-n">M02</span>
+          <h4><button type="button" class="m-open">Find and Approach the Cargo</button></h4>
+          <p>The robot must locate a cargo pod at the landing site and position itself correctly for pickup. Students demonstrate controlled alignment, approach, and docking without manually repositioning either the robot or cargo.</p>
+        </article>
+        <article class="mission">
+          <span class="m-n">M03</span>
+          <h4><button type="button" class="m-open">Pick Up and Secure One Cargo Pod</button></h4>
+          <p>Retrieve one simulated <strong>4&nbsp;ft × 2&nbsp;ft Astrobotic cargo pod</strong> and mechanically secure it for transportation. The robot must demonstrate that the load remains stable while starting, stopping, turning, and traversing uneven terrain.</p>
+        </article>
+        <article class="mission">
+          <span class="m-n">M04</span>
+          <h4><button type="button" class="m-open">Transport Cargo to the Habitat</button></h4>
+          <p>Carry the pod from the simulated landing zone to the supply-building/habitat area without dropping or damaging it. The course should include rocks, slopes, turns, loose-regolith simulation, and other obstacles representative of lunar surface transportation.</p>
+        </article>
+        <article class="mission">
+          <span class="m-n">M05</span>
+          <h4><button type="button" class="m-open">Deliver and Place the Cargo</button></h4>
+          <p>At the habitat, the robot must accurately position and unload the cargo into a designated receiving zone. Success requires both transportation and controlled cargo placement — not simply dropping the payload near the building.</p>
+        </article>
+        <article class="mission">
+          <span class="m-n">M06</span>
+          <h4><button type="button" class="m-open">Complete a Full Logistics Cycle</button></h4>
+          <p>Demonstrate an end-to-end mission: receive a cargo assignment, navigate to the lander, acquire the payload, transport it, deliver it to the correct destination, and return for another load. Students should measure mission time, distance traveled, energy consumed, positioning accuracy, and successful delivery.</p>
+        </article>
+      </div>
+
+      <h3 class="tier adv">Advanced / innovative <span>M07 — M12</span></h3>
+      <div class="missions">
+        <article class="mission">
+          <span class="m-n">M07</span>
+          <h4><button type="button" class="m-open">Navigate the 2-km Lunar Supply Route Autonomously</button></h4>
+          <p>Simulate the storyboard's <strong>2&nbsp;km separation between the landing pad and habitat</strong>, scaled appropriately for the prototype course. The robot must autonomously follow or determine a safe route while avoiding craters, rocks, restricted zones, steep terrain, and simulated landing-plume hazard areas.</p>
+        </article>
+        <article class="mission">
+          <span class="m-n">M08</span>
+          <h4><button type="button" class="m-open">One Robot, Three Very Different Cargo Systems</button></h4>
+          <p>Develop an adaptable cargo-handling concept capable of working with the three logistics architectures in the lunar-base scenario: <strong>Astrobotic's smaller pods, a Blue Origin cylindrical cargo module, and a SpaceX-scale shipping-container concept</strong>. Prototypes need not lift full-scale representations; instead they should demonstrate a scalable interface, attachment system, or modular cargo-handling architecture.</p>
+        </article>
+        <article class="mission">
+          <span class="m-n">M09</span>
+          <h4><button type="button" class="m-open">Two Robots Cooperate Without Humans</button></h4>
+          <p>Two robots must work together to accomplish a task that one robot cannot efficiently complete alone — for example, moving an oversized habitat component, positioning cargo, clearing a route, or transferring a payload between vehicles. The robots should communicate their position, task status, cargo condition, and next action while preventing collisions.</p>
+        </article>
+        <article class="mission">
+          <span class="m-n">M10</span>
+          <h4><button type="button" class="m-open">Something Goes Wrong</button></h4>
+          <p>During the mission, judges introduce an unknown problem: a blocked road, failed sensor, communications loss, low battery, shifted cargo, disabled wheel, or unavailable receiving location. The robot must detect the problem and either autonomously select a safe alternative or communicate enough diagnostic information for a remote operator to make a decision.</p>
+        </article>
+        <article class="mission">
+          <span class="m-n">M11</span>
+          <h4><button type="button" class="m-open">AI Lunar Logistics Manager</button></h4>
+          <p>Instead of telling the robot exactly what to do, give the system several cargo requests with different priorities — habitat supplies, replacement batteries, life-support equipment, scientific instruments, and emergency repair parts. The software must determine <strong>what should move first, which robot should move it, which route to use, and when the mission should occur</strong>, then demonstrate the resulting plan with the prototype.</p>
+        </article>
+        <article class="mission">
+          <span class="m-n">M12</span>
+          <h4><button type="button" class="m-open">Build Something That Wasn't Requested</button></h4>
+          <p>An open-ended challenge: <strong>"What capability will a lunar cargo robot need that NASA hasn't asked you to demonstrate yet?"</strong> Teams identify the problem and demonstrate their own innovation — self-charging, robotic trailer trains, automatic cargo identification, cooperative lifting, regolith-clearing attachments, predictive maintenance, autonomous emergency resupply, swappable tools, temporary road construction, or using cargo containers as structural components of the lunar base.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="doc-foot">
+      <a class="cta" href="index.html#problem">
+        <span class="cta-n">←</span>
+        <span class="cta-l">RETURN TO MISSION</span>
+      </a>
+    </footer>
+  </main>
+
+  <dialog id="m-dialog" class="m-dialog" aria-labelledby="md-title">
+    <div class="md-head">
+      <span class="m-n" id="md-n"></span>
+      <button type="button" class="md-close" id="md-close" aria-label="Close">✕</button>
+    </div>
+    <h4 id="md-title"></h4>
+    <p id="md-body"></p>
+    <div class="md-nav">
+      <button type="button" id="md-prev">← PREV</button>
+      <button type="button" id="md-next">NEXT →</button>
+    </div>
+  </dialog>
+
+  <script src="js/stars.js"></script>
+  <script>
+    // Mission titles open a pop-up with the full description.
+    (() => {
+      const cards = [...document.querySelectorAll(".mission")];
+      const dlg = document.getElementById("m-dialog");
+      const n = document.getElementById("md-n"), title = document.getElementById("md-title"), body = document.getElementById("md-body");
+      let cur = 0;
+      const show = (i) => {
+        cur = (i + cards.length) % cards.length;
+        const c = cards[cur];
+        n.textContent = c.querySelector(".m-n").textContent;
+        dlg.classList.toggle("adv", cur >= 6);
+        title.textContent = c.querySelector(".m-open").textContent;
+        body.innerHTML = c.querySelector("p").innerHTML;
+        if (!dlg.open) dlg.showModal();
+      };
+      cards.forEach((c, i) => c.querySelector(".m-open").addEventListener("click", () => show(i)));
+      document.getElementById("md-close").addEventListener("click", () => dlg.close());
+      document.getElementById("md-prev").addEventListener("click", () => show(cur - 1));
+      document.getElementById("md-next").addEventListener("click", () => show(cur + 1));
+      dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); }); // click backdrop
+      dlg.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") show(cur + 1);
+        if (e.key === "ArrowLeft") show(cur - 1);
+      });
+    })();
+
+    // Reveal blocks as they scroll in, and highlight the current table-of-contents entry.
+    (() => {
+      const blocks = document.querySelectorAll(".doc-hero, .doc-sec, .mission");
+      const links = [...document.querySelectorAll(".doc-toc a")];
+      if (!("IntersectionObserver" in window)) { blocks.forEach((b) => b.classList.add("in")); return; }
+      const reveal = new IntersectionObserver((es) => {
+        for (const e of es) if (e.isIntersecting) { e.target.classList.add("in"); reveal.unobserve(e.target); }
+      }, { threshold: 0.12 });
+      blocks.forEach((b) => reveal.observe(b));
+      const spy = new IntersectionObserver((es) => {
+        for (const e of es) if (e.isIntersecting) {
+          for (const a of links) a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id);
+        }
+      }, { rootMargin: "-45% 0px -50% 0px" });
+      document.querySelectorAll("main section[id]").forEach((s) => spy.observe(s));
+    })();
+  </script>
+</body>
+</html>

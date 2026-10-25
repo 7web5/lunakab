@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <title>LunaKAB — Research</title>
+  <meta name="description" content="LunaKAB research: articles, patent search and previous solutions." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/problem.css" />
+  <link rel="stylesheet" href="css/research.css" />
+</head>
+<body class="doc-page">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div id="vignette" aria-hidden="true"></div>
+  <div id="scanline" aria-hidden="true"></div>
+  <span class="corner tl"></span><span class="corner tr"></span>
+  <span class="corner bl"></span><span class="corner br"></span>
+
+  <header class="doc-top">
+    <a class="mark" href="index.html#research" aria-label="Back to the mission">
+      <img class="mark-icon" src="assets/logo-mark.svg" alt="" />
+      <span class="mark-text">
+        <span class="mark-title">LUNA<span class="kab">KAB</span></span>
+        <span class="mark-sub">NASA HUNCH</span>
+      </span>
+    </a>
+    <a class="doc-back" href="index.html#research"><span aria-hidden="true">←</span> RETURN TO MISSION</a>
+  </header>
+
+  <main class="doc doc-narrow">
+    <section class="doc-hero">
+      <span class="eyebrow">03 / RESEARCH</span>
+      <h1>Research</h1>
+      <p class="r-summary">Across 10 articles, 6 patents and 10 previous solutions, one gap kept appearing: the pieces of lunar cargo logistics exist, but never together. Cranes like LSMS and LANDO can offload a lander but stay in place; rovers like Pegasus, CLV-1 and FLEX can travel but need astronauts to load and direct them; and autonomous navigation works, but so far only for science missions. With a five-second signal delay ruling out driving from Earth, and sharp dust and radiation making every walk outside a risk, we set out to build one robot that does the whole job alone — a horizontal crane to load itself, a sealed bay and conveyor to carry and hand off cargo, four-wheel skid steering to turn and dock, and front sensors to find its own way.</p>
+      <p class="lede">The sources, patents and earlier approaches that informed our design. Choose a category to explore.</p>
+    </section>
+
+    <div class="r-tabs" role="tablist" aria-label="Research categories">
+      <button class="r-tab" role="tab" id="tab-articles" aria-controls="articles" aria-selected="false" data-key="articles">
+        <span class="r-n">A</span>
+        <span class="r-l">Articles</span>
+        <span class="r-d">Papers, reports and reading on lunar logistics</span>
+        <span class="r-arrow" aria-hidden="true">→</span>
+      </button>
+      <button class="r-tab" role="tab" id="tab-patents" aria-controls="patents" aria-selected="false" data-key="patents">
+        <span class="r-n">B</span>
+        <span class="r-l">Patent Search</span>
+        <span class="r-d">Existing patents on cargo handling, docking and mobility</span>
+        <span class="r-arrow" aria-hidden="true">→</span>
+      </button>
+      <button class="r-tab" role="tab" id="tab-previous" aria-controls="previous" aria-selected="false" data-key="previous">
+        <span class="r-n">C</span>
+        <span class="r-l">Previous Solutions</span>
+        <span class="r-d">How others have tackled surface cargo transport</span>
+        <span class="r-arrow" aria-hidden="true">→</span>
+      </button>
+    </div>
+
+    <section class="r-panel" role="tabpanel" id="articles" aria-labelledby="tab-articles" hidden>
+      <h2><i>A</i>Articles</h2>
+      <div class="sources">
+        <article class="src">
+          <span class="m-n">SOURCE 01</span>
+          <h3><button type="button" class="m-open">Cargo Spacecraft</button></h3>
+          <span class="src-meta">EBSCO · 2024 · By Karunya</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite"><em>Cargo spacecraft | EBSCO</em>. (2024). EBSCO Information Services, Inc. | www.ebsco.com.</p>
+            <a class="src-link" href="https://www.ebsco.com/research-starters/engineering/cargo-spacecraft" target="_blank" rel="noopener">ebsco.com/research-starters/engineering/cargo-spacecraft ↗</a>
+            <h5>Artifact summary</h5>
+            <p>It defines what cargo spacecraft are: they are designed to carry supplies into orbit. Cargo spacecraft were first made by scientists who worked for the Soviet Union in the 1960s. They created the TKS, a Transport Supply Spacecraft, but this required a pilot and crew. In order to maintain a permanent crew, however, the ISS needed a steady stream of supplies going in and out. The European Space Agency later created the Automated Transfer Vehicle, which could carry around 7,600&nbsp;kg, and the Japan Aerospace Exploration Agency developed the H-II Transfer Vehicle, which could carry around 6,000&nbsp;kg of material. The ATV and HTV were unmanned, autonomous/remote-controlled, and launched from Earth. After the Space Shuttle retired, SpaceX launched the Dragon, the first reusable cargo spacecraft. Engineers are continuing to improve on these designs.</p>
+            <h5>Artifact critique</h5>
+            <p>This artifact talks about the differences between the cargo spacecraft developed over the years, but doesn't mention critiques of any of them. I would like to learn more about how the Dragon could be further improved and what scientists are looking for in future spacecraft. As of right now, it seems that most of these spacecraft are launched from Earth and then attach themselves to the ISS, and humans have to retrieve the cargo — so an autonomous cargo transport vehicle between the supply building and the payload seems to be what engineers are trying to build.</p>
+            <h5>Reliability</h5>
+            <p>The article references around 10 sources, all from recent NASA articles, and was itself published around 2020. With all this information, I believe the source is reliable, as it uses direct research from NASA and is factual rather than biased.</p>
+            <a class="src-pdf" href="docs/research/source-1.pdf" target="_blank" rel="noopener">Open Source 1 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOURCE 02</span>
+          <h3><button type="button" class="m-open">Human Safety in the Lunar Environment</button></h3>
+          <span class="src-meta">NSS · Lewis, 2018 · By Karunya</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">Lewis, R. (2018). <em>Human safety in the lunar environment</em>. nss.org.</p>
+            <a class="src-link" href="https://nss.org/settlement/nasa/spaceresvol4/human.html" target="_blank" rel="noopener">nss.org/settlement/nasa/spaceresvol4/human.html ↗</a>
+            <h5>Artifact summary</h5>
+            <p>It talks mainly about the hazards of walking on the Moon. Some of these concerns include the atmosphere, water, chemicals in lunar soil, the concentration of hydrogen, and the solar wind, which contains many ionized atoms from the exterior of the Sun. It also talks about byproducts that can be absorbed to get the nutrients humans need for survival through lunar community farming and filling stations — mostly going over how life on the lunar surface could be possible and tips for how to make that happen.</p>
+            <h5>Artifact critique</h5>
+            <p>This article does show both sides of how human survival on the Moon is possible, but it talks more about how we can use the soil, sunlight, and chemicals on the Moon to our benefit than about the dangers that can come from incorrectly obtaining these materials (it focuses on the positives rather than the downsides).</p>
+            <h5>Reliability</h5>
+            <p>This article is from the NSS website, and most of its references range from institutional to Washington, DC articles. I think this article is reliable overall, as it combines scholarly and general articles to make scientific claims about life on the lunar surface, and is published by the NSS.</p>
+            <a class="src-pdf" href="docs/research/source-2.pdf" target="_blank" rel="noopener">Open Source 2 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOURCE 03</span>
+          <h3><button type="button" class="m-open">The Space Shuttle</button></h3>
+          <span class="src-meta">NASA · 2023 · By Karunya</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">NASA. (2023, June 2). <em>The Space Shuttle - NASA</em>. NASA.</p>
+            <a class="src-link" href="https://www.nasa.gov/reference/the-space-shuttle/" target="_blank" rel="noopener">nasa.gov/reference/the-space-shuttle ↗</a>
+            <h5>Artifact summary</h5>
+            <p>This article talks about the different parts of the Space Shuttle (main engine, orbiter, external tank, solid rocket boosters) and how each plays an important role in delivering cargo. It also includes facts about how long a mission may take, the number of crew members on board, and launch records. It mentions how, due to weight reduction, the cost of producing the shuttle decreased, and how through continuous improvement it became safer to fly; the article gives examples of how the crew module, flight deck, and quarters were improved to be more efficient.</p>
+            <h5>Artifact critique</h5>
+            <p>Overall, I learned more about how regular space shuttles work and how different parts of the spacecraft contribute to the journey into space, but this article relates more to crew shuttles than to cargo transport, so it's not directly important for my project.</p>
+            <h5>Reliability</h5>
+            <p>This article is published on the NASA website and was updated this year. NASA is recognized as a reliable source of information on space missions, so this article is a reliable source regarding improvements in Space Shuttle technology.</p>
+            <a class="src-pdf" href="docs/research/source-3.pdf" target="_blank" rel="noopener">Open Source 3 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOURCE 04</span>
+          <h3><button type="button" class="m-open">6 Horrifying Ways to Die on the Moon</button></h3>
+          <span class="src-meta">BBC Science Focus · Day, 2026 · By Karunya</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">Day, M. (2026, August 30). <em>6 horrifying ways to die on the Moon: The biggest hazards facing NASA's permanent base</em>. BBC Science Focus Magazine.</p>
+            <a class="src-link" href="https://www.sciencefocus.com/space/6-ways-die-moon" target="_blank" rel="noopener">sciencefocus.com/space/6-ways-die-moon ↗</a>
+            <h5>Artifact summary</h5>
+            <p>This article talks about the dangers of living on the Moon. It goes into depth about how the Moon's atmosphere doesn't protect us from harmful radiation, how lunar dust is razor-sharp and can pose risks to the lungs and eyes, and how if you lose pressurized air you could black out and die in 90 seconds. The article mainly criticizes the human desire for lunar settlement and argues that the Moon was not designed for humans.</p>
+            <h5>Artifact critique</h5>
+            <p>I love how the article provides detailed reasons why walking and living on the Moon is dangerous even when humans wear pressurized suits during EVAs, but I worry about how accurate the information truly is, as it is not an academic source.</p>
+            <h5>Reliability</h5>
+            <p>This article was published in BBC Science Focus, a mass-media magazine written for the general public. It tries to maintain reputable journalism standards and is often fact-checked by real scientists and experts; however, it is not an academic or primary source.</p>
+            <a class="src-pdf" href="docs/research/source-4.pdf" target="_blank" rel="noopener">Open Source 4 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOURCE 05</span>
+          <h3><button type="button" class="m-open">Autonomous System Makes It Easier to Transport Cargo on the Moon</button></h3>
+          <span class="src-meta">Phys.org · 2025 · By Karunya</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">Toronto, U. (2025, October 18). <em>Researchers' autonomous system makes it easier to transport cargo on the moon</em>. Phys.org.</p>
+            <a class="src-link" href="https://phys.org/news/2025-10-autonomous-easier-cargo-moon.html" target="_blank" rel="noopener">phys.org/news/2025-10-autonomous-easier-cargo-moon ↗</a>
+            <h5>Artifact summary</h5>
+            <p>This article describes how a team of researchers at the University of Toronto Institute for Aerospace Studies realized that the distance between a cargo lander's landing site and the astronauts' habitat was too far. Even though gravity is 1/6 of Earth's, making the cargo lighter, the distance between the sites poses a greater threat than the weight of the cargo. The landing site is flat for a safe arrival, whereas the habitat is shielded behind rocky terrain, which means astronauts would have to walk across that terrain to retrieve the cargo and bring it back. Instead of having humans do it, the researchers are building a rover that works autonomously to retrieve cargo from the landing site and deliver it to the habitat. Previous rovers were built to explore the lunar surface, whereas this rover is built to travel back and forth along the same path. The article also covers technical challenges they faced, such as developing a new semi-autonomous "teach" approach, since regular joystick control wouldn't work with the five-second delay between command and feedback.</p>
+            <h5>Artifact critique</h5>
+            <p>Since this article relates directly to my project of creating an external cargo robot, I learned more about the significance of this robot and the problems that may come up (such as developing better autonomous technology) while working on it. It also helped me understand that researchers are actively working on this problem, so there is a lot of room for improvement with these new rovers.</p>
+            <h5>Reliability</h5>
+            <p>This article was published on Phys.org, which is generally considered credible, as it often links to peer-reviewed research and is part of the Science X network. However, much of its content relies on university press releases, which could exaggerate a study's claims.</p>
+            <a class="src-pdf" href="docs/research/source-5.pdf" target="_blank" rel="noopener">Open Source 5 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOURCE 06</span>
+          <h3><button type="button" class="m-open">Lunar Rover Cargo Transport: Mission Concept and Field Test</button></h3>
+          <span class="src-meta">arXiv · 2026 · By Abirami</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">Krawciw, A., Olmedo, N., Rehmatullah, F., Maxime, D.-G., Pascal, T., &amp; Barfoot, T. D. (2026). <em>Lunar rover cargo transport: Mission concept and field test</em> (2601.03371v1). arXiv.</p>
+            <a class="src-link" href="https://arxiv.org/pdf/2601.03371" target="_blank" rel="noopener">arxiv.org/pdf/2601.03371 ↗</a>
+            <h5>Artifact summary</h5>
+            <p>This article explains how autonomous rovers transport cargo between the lunar landing site and the habitat. In this study, the researchers tested a rover carrying cargo while using autonomous navigation, and they gathered data on how cargo loads affected precision and positioning. This connects to my HUNCH project, since a lunar cargo robot must be able to autonomously navigate the harsh lunar terrain while also safely transporting payloads.</p>
+            <h5>Artifact critique</h5>
+            <p>I think this article is highly relevant because it tests a real rover carrying cargo instead of relying on computer simulations. For my HUNCH project, the strongest point is how the article discusses the way payload weight affects vehicle performance. However, the experiment was conducted in a lunar simulation on Earth, so the evidence could be stronger with testing on unpredictable terrain and routes.</p>
+            <h5>Reliability</h5>
+            <p>This article is very reliable because it is a scholarly research paper from the IEEE (Institute of Electrical and Electronics Engineers), and it provides detailed experimental methods. The article was written by one graduate student member and other fellows of the institute.</p>
+            <a class="src-pdf" href="docs/research/source-6.pdf" target="_blank" rel="noopener">Open Source 6 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOURCE 07</span>
+          <h3><button type="button" class="m-open">Surface Transportation of the Common Habitat from Lander to Habitation Zone</button></h3>
+          <span class="src-meta">NASA NTRS · 2022 · By Abirami</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">Howard, R., Gomez, J., &amp; Gill, T. (2022). <em>Surface transportation of the common habitat from lander to habitation zone</em>. NASA NTRS.</p>
+            <a class="src-link" href="https://ntrs.nasa.gov/api/citations/20220018787/downloads/Surface%20Transportation%20of%20the%20Common%20Habitat%20from%20Lander%20to%20Habitation%20Zone.pdf" target="_blank" rel="noopener">ntrs.nasa.gov/citations/20220018787 ↗</a>
+            <h5>Artifact summary</h5>
+            <p>The article explains studies on how a lunar habitat could be moved from a lander to a habitation zone. Various transportation systems are described and compared, identifying challenges such as offloading and remote operations. This relates to my HUNCH project, since I'm dealing with lunar cargo transport from the lander to the habitat.</p>
+            <h5>Artifact critique</h5>
+            <p>This source is relevant since it directly examines lunar surface transportation and the obstacles of transporting cargo across the terrain. For my HUNCH project, the strongest point is the comparison of several transportation systems, since I could research those to get a better understanding of my robot. However, the article deals with transporting a heavy habitat as opposed to small cargo.</p>
+            <h5>Reliability</h5>
+            <p>The authors work at NASA Johnson Space Center and NASA Kennedy Space Center, giving them credibility through their experience with spacecraft transportation systems. This was presented at the 2023 IEEE Aerospace Conference, and the paper was found on NASA NTRS.</p>
+            <a class="src-pdf" href="docs/research/source-7.pdf" target="_blank" rel="noopener">Open Source 7 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOURCE 08</span>
+          <h3><button type="button" class="m-open">LANDO: Developing Autonomous Operations for Planetary Surfaces</button></h3>
+          <span class="src-meta">NASA · 2023 · By Abirami</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">Waltz, W. (2023). <em>LANDO: Developing autonomous operations for planetary surfaces</em>. NASA Advisory Council Technology, Innovation, and Engineering Committee.</p>
+            <a class="src-link" href="https://www.nasa.gov/wp-content/uploads/2024/05/waltz-eci-lando-tagged.pdf" target="_blank" rel="noopener">nasa.gov/…/waltz-eci-lando-tagged.pdf ↗</a>
+            <h5>Artifact summary</h5>
+            <p>This team developed LANDO, an autonomous system for handling and offloading lunar payloads. The system is designed to detect payload characteristics, safely lift objects, and place them onto mobile vehicles for transport. It addresses the problem of autonomous cargo operations. This connects to my HUNCH project, since the majority of the robot's job is autonomous cargo handling.</p>
+            <h5>Artifact critique</h5>
+            <p>This article is relevant since it focuses on autonomous lunar cargo handling. For my HUNCH project, the strongest part is the information on the practical problems the robot faced, such as payload detection, safely lifting the cargo, and tilted lander decks. However, LANDO deals more with handling the cargo itself than with transporting it a long distance.</p>
+            <h5>Reliability</h5>
+            <p>The presenter, Walter Waltz, along with researchers Matthew Vaughn and Iok Wong, each have multiple research publications on aerospace development and spacecraft transportation. The project lead, Julia Cline, is a NASA Langley aerospace engineer with a PhD. The work was developed through NASA's Space Technology Mission Directorate and presented at the AIAA SciTech Forum, making it a very reliable source.</p>
+            <a class="src-pdf" href="docs/research/source-8.pdf" target="_blank" rel="noopener">Open Source 8 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOURCE 09</span>
+          <h3><button type="button" class="m-open">Terramechanics for LTV Modeling and Simulation</button></h3>
+          <span class="src-meta">NASA NTRS · 2022 · By Abirami</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">Li, Z., &amp; Bingham, L. (2022). <em>NASA white paper – Terramechanics for LTV modeling and simulation</em>. NASA NTRS.</p>
+            <a class="src-link" href="https://ntrs.nasa.gov/api/citations/20220010732/downloads/Terramechanics_white_paper.pdf" target="_blank" rel="noopener">ntrs.nasa.gov/citations/20220010732 ↗</a>
+            <h5>Artifact summary</h5>
+            <p>This article focuses on how rover wheels interact with the lunar soil and how that affects the vehicle's movement. It explains models of rolling resistance, soil compression and traction, among others. The research also describes various conditions in which a rover became stuck in the soil. This connects to my HUNCH project, since the rover I'm designing needs proper wheels and mobility for the cargo it is carrying.</p>
+            <h5>Artifact critique</h5>
+            <p>This article is relevant because it explains the mechanical forces acting on a lunar cargo robot. It will be useful for HUNCH since it provides models to predict rover performance on lunar terrain. However, it only focuses on mobility, which is one part of the robot we need to build, and it relies primarily on simulations rather than prototype testing.</p>
+            <h5>Reliability</h5>
+            <p>Both authors are NASA Johnson Space Center researchers specializing in engineering, specifically lunar vehicle mobility. The work was produced for NASA's Lunar Terrain Vehicle research and published through NASA NTRS.</p>
+            <a class="src-pdf" href="docs/research/source-9.pdf" target="_blank" rel="noopener">Open Source 9 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOURCE 10</span>
+          <h3><button type="button" class="m-open">A Survey of Autonomous Navigation Techniques Applicable to Lunar Surface Exploration</button></h3>
+          <span class="src-meta">NASA NTRS · 2025 · By Abirami</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">McKee, P. (2025). <em>A survey of autonomous navigation techniques applicable to lunar surface exploration</em>. NASA NTRS.</p>
+            <a class="src-link" href="https://ntrs.nasa.gov/api/citations/20250000993/downloads/AAS_25_173_SurfaceNav_Presentation_draft012425.pdf" target="_blank" rel="noopener">ntrs.nasa.gov/citations/20250000993 ↗</a>
+            <h5>Artifact summary</h5>
+            <p>This article examines the technologies that let lunar rovers operate autonomously. It studies sensors such as LiDAR, various cameras, IMUs, wheel encoders and star trackers, as well as hazard detection and pathfinding. The study also covers navigation and communication systems for when Earth is out of reach or unavailable. This connects to my HUNCH project because the robot must be able to navigate safely from the lander to the habitat without any human control.</p>
+            <h5>Artifact critique</h5>
+            <p>This source is relevant because it explains many useful technologies for solving navigation issues that could arise, and we can build on it to design our robot to operate autonomously. For my HUNCH project, the strongest point of evidence is the comparison of different sensors and navigation methods. However, it is structured as a survey rather than an experiment, which helps with gathering data but not with implementing it.</p>
+            <h5>Reliability</h5>
+            <p>McKee is a researcher in NASA Johnson Space Center's Aeroscience and Flight Mechanics Division. His work was presented at the 47th American Astronautical Society Guidance, Navigation, and Control Conference in 2025. It's a strong reference due to its detailed explanation of the techniques and its basis in NASA research.</p>
+            <a class="src-pdf" href="docs/research/source-10.pdf" target="_blank" rel="noopener">Open Source 10 (PDF) ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="r-panel" role="tabpanel" id="patents" aria-labelledby="tab-patents" hidden>
+      <h2><i>B</i>Patent Search</h2>
+      <div class="sources">
+        <article class="src">
+          <span class="m-n">PATENT 01</span>
+          <h3><button type="button" class="m-open">Mobile Planetary Rover Robot for Transport and Technological Work</button></h3>
+          <span class="src-meta">RU176098U1 · 2017 · By Karunya</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite"><em>RU176098U1 - Мобильный робот-планетоход для выполнения транспортно-технологических работ - Google Patents</em>. (2017, April 17). Google.com.</p>
+            <a class="src-link" href="https://patents.google.com/patent/RU176098U1/ru" target="_blank" rel="noopener">patents.google.com/patent/RU176098U1 ↗</a>
+            <h5>Patent number and name</h5>
+            <p class="cite">RU176098U1 — Mobile planetary rover robot for performing transport and technological work</p>
+            <h5>Patent summary</h5>
+            <p>It is a mobile planetary rover robot that can function autonomously and under human control. It is designed to move on the surface of the Moon and carry out transport and technological operations. There are also seats for astronauts to sit in and control the vehicle; astronauts can use it to explore the lunar surface and transport cargo from one location to another.</p>
+            <h5>Patent critique</h5>
+            <p>It allows for the transport of goods and works autonomously while allowing for human intervention; however, human input is still required to transport the goods. The astronauts ride in the robot and help load the cargo, whereas our robot must operate completely autonomously — picking up the cargo, placing it in the robot, and bringing it back to the habitat.</p>
+            <h5>Images / sketches</h5>
+            <div class="src-figs">
+              <figure><img src="docs/research/img/patent-1-rover-iso.png" alt="Isometric patent drawing of a six-wheeled lunar rover with a solar panel, two astronaut seats and a cargo bed" loading="lazy" /><figcaption>Rover iso sketch</figcaption></figure>
+            </div>
+            <a class="src-pdf" href="docs/research/patent-1.pdf" target="_blank" rel="noopener">Open Patent 1 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">PATENT 02</span>
+          <h3><button type="button" class="m-open">Autonomous System for Air Cargo End-to-End Operations</button></h3>
+          <span class="src-meta">US20230120320A1 · 2022 · By Karunya</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite"><em>US20230120320A1 - Autonomous system for air cargo end-to-end operations - Google Patents</em>. (2022, November 29). Google.com.</p>
+            <a class="src-link" href="https://patents.google.com/patent/US20230120320A1/en" target="_blank" rel="noopener">patents.google.com/patent/US20230120320A1 ↗</a>
+            <h5>Patent number and name</h5>
+            <p class="cite">US20230120320A1 — Autonomous system for air cargo end-to-end operation</p>
+            <h5>Patent summary</h5>
+            <p>This invention is an end-to-end cargo handling system. It includes a transportation unit with a first sensing agent, a lift unit with a second sensing agent, and a control module that communicates with the transportation unit and lift unit over a network. The transportation unit and lift unit are designed to move the cargo unit between two locations autonomously.</p>
+            <h5>Patent critique</h5>
+            <p>This system transports cargo autonomously in end-to-end operations within Earth's atmosphere. However, our invention needs to transport cargo on the lunar surface. I like the idea of flying cargo from one location to another, but that could be an invention implemented in future years.</p>
+            <h5>Images / sketches</h5>
+            <div class="src-figs">
+              <figure><img src="docs/research/img/patent-2-top-view.png" alt="Top-view patent diagram of an aircraft with a cargo path leading to a loading area" loading="lazy" /><figcaption>Top view</figcaption></figure>
+              <figure><img src="docs/research/img/patent-2-iso.png" alt="Isometric patent drawing of an aircraft being loaded (Fig. 1)" loading="lazy" /><figcaption>Iso sketch</figcaption></figure>
+            </div>
+            <a class="src-pdf" href="docs/research/patent-2.pdf" target="_blank" rel="noopener">Open Patent 2 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">PATENT 03</span>
+          <h3><button type="button" class="m-open">Method and System for the Automatic Loading of Air Transport Units</button></h3>
+          <span class="src-meta">KR101495020B1 · 2010 · By Karunya</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite"><em>KR101495020B1 - Method and system for the automatic loading of air transport units - Google Patents</em>. (2010, August 19). Google.com.</p>
+            <a class="src-link" href="https://patents.google.com/patent/KR101495020B1/en" target="_blank" rel="noopener">patents.google.com/patent/KR101495020B1 ↗</a>
+            <h5>Patent number and name</h5>
+            <p class="cite">KR101495020B1 — Method and system for the automatic loading of air transport units</p>
+            <h5>Patent summary</h5>
+            <p>The invention is a system and method for automatically loading air transport units. The air transport unit (10) is tilted toward the side of the loading opening and uses an elevated sliding method, so that goods (30) travel to the unit (10) and are then delivered to the packing location (60).</p>
+            <h5>Patent critique</h5>
+            <p>I like the slider technique; in fact, I wanted to implement a horizontal escalator technique to help deliver the cargo into the habitat smoothly. However, this invention relies on positioning and doesn't use motor-driven escalators. While that may work for this stationary innovation, a motor-driven slider may be more efficient for our robot.</p>
+            <h5>Images / sketches</h5>
+            <div class="src-figs">
+              <figure><img src="docs/research/img/patent-3-side-view.png" alt="Patent drawing of a tilted loading unit with a sliding conveyor moving packages to a packing area" loading="lazy" /><figcaption>Side view</figcaption></figure>
+              <figure><img src="docs/research/img/patent-3-escalator.png" alt="Small sketch of a horizontal escalator design with labeled axes" loading="lazy" /><figcaption>Horizontal escalator design</figcaption></figure>
+            </div>
+            <a class="src-pdf" href="docs/research/patent-3.pdf" target="_blank" rel="noopener">Open Patent 3 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">PATENT 04</span>
+          <h3><button type="button" class="m-open">Moon Complex, Orbiting Docking Spaceport, and Methods of Use and Transportation</button></h3>
+          <span class="src-meta">US11305897B2 · 2020 · By Abirami</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite"><em>US11305897B2 - Moon complex, orbiting docking spaceport, and methods of use and transportation - Google Patents</em>. (2020, December 30). Google.com.</p>
+            <a class="src-link" href="https://patents.google.com/patent/US11305897B2/en" target="_blank" rel="noopener">patents.google.com/patent/US11305897B2 ↗</a>
+            <h5>Patent number and name</h5>
+            <p class="cite">US11305897B2 — Moon complex, orbiting docking spaceport, and methods of use and transportation</p>
+            <h5>Patent summary</h5>
+            <p>This patent details a full moon complex, including the orbiting docking spacecraft and transportation vehicles that travel to and from the Moon and the Earth, and vehicles to travel on the surface of the celestial bodies. The complex contains large personnel/cargo transport ideas within it. It's immensely beneficial to refuel and to use as a transport base for any transportation between the Earth and the Moon.</p>
+            <h5>Patent critique</h5>
+            <p>This patent focuses primarily on the transportation between the Moon and the Earth, while our HUNCH project focuses on transportation on the Moon, not between the Earth and the Moon. However, the ideas presented on containing the cargo and efficiently transporting it can be used for our project.</p>
+            <h5>Images / sketches</h5>
+            <div class="src-figs">
+              <figure><img src="docs/research/img/patent-4-carrier.png" alt="Patent drawings (Figs. 3A and 3B) of a bullet-shaped moon docking and transport carrier standing on four curved landing legs" loading="lazy" /><figcaption>Moon docking and transport carrier</figcaption></figure>
+              <figure><img src="docs/research/img/patent-4-transport-craft.png" alt="Patent drawings (Figs. 4A to 4C) of a long cylindrical transport craft with portholes, docking ports and legs, shown from the side and two angles" loading="lazy" /><figcaption>Transport craft</figcaption></figure>
+            </div>
+            <a class="src-pdf" href="docs/research/patent-4.pdf" target="_blank" rel="noopener">Open Patent 4 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">PATENT 05</span>
+          <h3><button type="button" class="m-open">Design and Control of Wheel-Legged Robots Navigating High Obstacles</button></h3>
+          <span class="src-meta">US20250291353A1 · 2023 · By Abirami</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite"><em>US20250291353A1 - Design and control of wheel-legged robots navigating high obstacles - Google Patents</em>. (2023, April 21). Google.com.</p>
+            <a class="src-link" href="https://patents.google.com/patent/US20250291353A1/en" target="_blank" rel="noopener">patents.google.com/patent/US20250291353A1 ↗</a>
+            <h5>Patent number and name</h5>
+            <p class="cite">US20250291353A1 — Design and control of wheel-legged robots navigating high obstacles</p>
+            <h5>Patent summary</h5>
+            <p>This patent details the design and control of wheel-legged robots navigating high obstacles. The methods explained include using a balance controller and a rolling controller to use thigh joint torque and calf joint torque for efficiency. Legged robots are able to navigate high terrain with obstacles, so optimizing their performance with nonlinear programming is viable.</p>
+            <h5>Patent critique</h5>
+            <p>This relates to our HUNCH project, as we also need to design a robot that can navigate and travel across high terrain — the lunar surface. Our robot will have wheels, so it's imperative that it travels safely and reaches the planned destination without any hurdles. Even though this patent gives us information on wheels in rugged terrain, it doesn't directly deal with the lunar surface.</p>
+            <h5>Images / sketches</h5>
+            <p>No images in the patent.</p>
+            <a class="src-pdf" href="docs/research/patent-5.pdf" target="_blank" rel="noopener">Open Patent 5 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">PATENT 06</span>
+          <h3><button type="button" class="m-open">Manned Driving and Flying Lunar Vehicle</button></h3>
+          <span class="src-meta">DE102021001813B4 · 2021 · By Abirami</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite"><em>DE102021001813B4 - Manned driving and flying lunar vehicle - Google Patents</em>. (2021, April 8). Google.com.</p>
+            <a class="src-link" href="https://patents.google.com/patent/DE102021001813B4/en" target="_blank" rel="noopener">patents.google.com/patent/DE102021001813B4 ↗</a>
+            <h5>Patent number and name</h5>
+            <p class="cite">DE102021001813B4 — Manned driving and flying lunar vehicle</p>
+            <h5>Patent summary</h5>
+            <p>This manned driving and flying lunar vehicle is designed for long-term stays and research within the module. It's capable of driving on the lunar terrain and flying over it, adapting to temperature fluctuations, and is equipped with the materials needed for research. It's very beneficial for astronauts or lunar researchers looking for a quicker way to move back to the habitat/research lab after they collect samples.</p>
+            <h5>Patent critique</h5>
+            <p>This relates to our HUNCH project because we need to design a cargo transport robot, meaning it needs to be able to contain whatever size cargo we're planning to transport. This patent details that, although its priority is being almost a makeshift habitat and lab on the move. Our robot will also be unmanned, so the patent's descriptions of manned systems won't apply to us.</p>
+            <h5>Images / sketches</h5>
+            <div class="src-figs">
+              <figure><img src="docs/research/img/patent-6-side-view.jpg" alt="Detailed patent cross-section (Fig. 1) of a manned lunar vehicle about 250 cm tall, showing crew compartments, wheels and drive gearing, with detail figures 2 to 5" loading="lazy" /><figcaption>Side view of the vehicle</figcaption></figure>
+            </div>
+            <a class="src-pdf" href="docs/research/patent-6.pdf" target="_blank" rel="noopener">Open Patent 6 (PDF) ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="r-panel" role="tabpanel" id="previous" aria-labelledby="tab-previous" hidden>
+      <h2><i>C</i>Previous Solutions</h2>
+      <div class="sources">
+        <article class="src">
+          <span class="m-n">SOLUTION 01</span>
+          <h3><button type="button" class="m-open">FLEX Rover</button></h3>
+          <span class="src-meta">Astrolab · By Karunya</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">FLEX Rover, Astrolab: <em>About – Astrolab</em></p>
+            <a class="src-link" href="https://www.astrolab.space/about/" target="_blank" rel="noopener">astrolab.space/about ↗</a>
+            <h5>Product summary</h5>
+            <p>It is a multi-purpose lunar vehicle that can carry people, cargo, and science equipment. It can pick up, carry, and deposit modular payloads of up to 1,600&nbsp;kg with more than 3&nbsp;m³ of usable payload volume. It has a robotic arm that can reach around 2 meters and is designed to manipulate payloads and perform logistical tasks such as interacting with objects on the surface, deploying equipment, or assisting with science operations. Instead of a conventional fixed suspension, it has limbs with wheels at the ends, which let the rover handle uneven terrain and lower or raise itself. It has autonomous navigation capabilities, with navigation and hazard-detection sensors. Overall, this robot has a solar power system and communication equipment, can carry two astronauts, can assist with scientific and logistics experiments, and can carry cargo from the payload lander to the habitat.</p>
+            <h5>Product critique</h5>
+            <p>It can carry a lot of load, but its limit is 3&nbsp;m² and 1,000&nbsp;kg, and our mission is to create a robot that can carry up to 20&nbsp;ft cargo modules. Additionally, this robot has not been tested in space yet; it is a conceptual prototype that has been tested in California, at NASA Johnson Space Center, and at other lunar analog sites.</p>
+            <h5>Images / sketches</h5>
+            <div class="src-figs">
+              <figure><img class="photo" src="docs/research/img/solution-1-flex-cargo.jpg" alt="Render of the Astrolab FLEX rover on the lunar surface with its cargo bay open" loading="lazy" /><figcaption>FLEX cargo bay</figcaption></figure>
+              <figure><img class="photo" src="docs/research/img/solution-1-flex-night.jpg" alt="FLEX rover prototype with headlights on, driving on a desert test site at dusk" loading="lazy" /><figcaption>Field prototype</figcaption></figure>
+              <figure><img class="photo" src="docs/research/img/solution-1-flex-sketch.jpg" alt="Line sketch of the FLEX rover with highlighted feature points" loading="lazy" /><figcaption>Feature sketch</figcaption></figure>
+            </div>
+            <a class="src-pdf" href="docs/research/solution-1.pdf" target="_blank" rel="noopener">Open Solution 1 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOLUTION 02</span>
+          <h3><button type="button" class="m-open">LANDO — Lightweight Surface Manipulation System AutoNomy</button></h3>
+          <span class="src-meta">NASA · By Karunya</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">LANDO, NASA</p>
+            <a class="src-link" href="https://ntrs.nasa.gov/citations/20210024207" target="_blank" rel="noopener">ntrs.nasa.gov/citations/20210024207 ↗</a>
+            <h5>Product summary</h5>
+            <p>The Lightweight Surface Manipulation System AutoNomy was designed to pick up and move payloads around the lunar surface. The previous LSMS relied on low-level scripted commands, so NASA engineers designed this system to detect tilted landers and to identify and manipulate objects. Overall, this robot was designed to be adaptable to different lunar tasks and to work more autonomously than previous models.</p>
+            <h5>Product critique</h5>
+            <p>This robot still depends on human supervision, as it is designed for supervised autonomy rather than complete independence. It also focuses mainly on payload manipulation rather than transportation: it can unload and place payloads, but doesn't solve the problem of moving cargo long distances across the lunar terrain.</p>
+            <h5>Images / sketches</h5>
+            <div class="src-figs">
+              <figure><img class="photo" src="docs/research/img/solution-2-lsms-diagram.jpg" alt="Diagram of the LSMS crane arm mounted on a lunar lander, with shoulder, elbow and wrist joints labeled" loading="lazy" /><figcaption>LSMS on a lander</figcaption></figure>
+              <figure><img class="photo" src="docs/research/img/solution-2-lsms-lander.jpg" alt="Render of a lunar lander with a mounted manipulator arm" loading="lazy" /><figcaption>Lander mount</figcaption></figure>
+            </div>
+            <a class="src-pdf" href="docs/research/solution-2.pdf" target="_blank" rel="noopener">Open Solution 2 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOLUTION 03</span>
+          <h3><button type="button" class="m-open">ATHLETE Rover</button></h3>
+          <span class="src-meta">JPL · NASA · By Karunya</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">ATHLETE, JPL, NASA: <em>JPL Robotics: The ATHLETE Rover</em></p>
+            <a class="src-link" href="https://www-robotics.jpl.nasa.gov/how-we-do-it/systems/the-athlete-rover/" target="_blank" rel="noopener">www-robotics.jpl.nasa.gov/…/the-athlete-rover ↗</a>
+            <h5>Product summary</h5>
+            <p>ATHLETE (All-Terrain Hex-Limbed Extra-Terrestrial Explorer) is a JPL robotic vehicle designed to move large cargo and equipment across the lunar surface. It has six articulated limbs, each with a wheel at the end. ATHLETE can also lock its wheels and use the limbs as feet when the terrain gets difficult, allowing it to move through many types of terrain.</p>
+            <h5>Product critique</h5>
+            <p>While it can navigate autonomously, humans still have to direct it — for example, telling the vehicle which cargo panel to move, what objects to avoid, and which direction to move toward. Our vehicle, in comparison, must be able to move with no specific human input: if astronauts need cargo from the payload lander, that should be the only instruction the robotic vehicle receives. Essentially, the structural idea of this robot — especially the six limbs — is influential, but it lacks the degree of autonomy our vehicle will need to exhibit.</p>
+            <h5>Images / sketches</h5>
+            <div class="src-figs">
+              <figure><img class="photo" src="docs/research/img/solution-3-athlete-terrain.jpg" alt="ATHLETE robot standing on rocky terrain on six wheeled limbs, with one limb raised" loading="lazy" /><figcaption>Field test</figcaption></figure>
+              <figure><img class="photo" src="docs/research/img/solution-3-athlete-habitat.jpg" alt="ATHLETE carrying a NASA habitat module on top of its six limbs" loading="lazy" /><figcaption>Carrying a habitat</figcaption></figure>
+              <figure><img class="photo" src="docs/research/img/solution-3-athlete-lab.jpg" alt="ATHLETE robot inside a NASA test facility" loading="lazy" /><figcaption>Lab testing</figcaption></figure>
+            </div>
+            <a class="src-pdf" href="docs/research/solution-3.pdf" target="_blank" rel="noopener">Open Solution 3 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOLUTION 04</span>
+          <h3><button type="button" class="m-open">Perseverance Rover</button></h3>
+          <span class="src-meta">NASA · Mars 2020 · By Karunya</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">Perseverance, NASA: <em>Perseverance Rover Components - NASA Science</em></p>
+            <a class="src-link" href="https://science.nasa.gov/mission/mars-2020-perseverance/rover-components/" target="_blank" rel="noopener">science.nasa.gov/mission/mars-2020-perseverance/rover-components ↗</a>
+            <h5>Product summary</h5>
+            <p>The Perseverance rover is a NASA Mars rover that landed in Jezero Crater in 2021. Its main purpose is to study the Martian surface and search for signs of ancient microbial life, and it collects rock and soil samples. The vehicle is a six-wheeled rover that uses cameras, sensors, and an autonomous navigation system called AutoNav to detect obstacles, create maps of the terrain, and plan safe routes. It also has a robotic arm and scientific instruments on board that let it examine and collect samples.</p>
+            <h5>Product critique</h5>
+            <p>While AutoNav can handle most of the driving, humans still choose the objectives and destinations, and it has difficulty navigating some Martian terrain. Additionally, it is a science rover, not a cargo transporter: while it can carry samples and equipment, it wasn't designed to move large structures. Our external cargo transport project could implement a navigation system similar to AutoNav — one that continuously updates a map of the lunar surface as it moves — but the overall missions of the two vehicles are completely different.</p>
+            <h5>Images / sketches</h5>
+            <div class="src-figs">
+              <figure><img class="photo" src="docs/research/img/solution-4-perseverance-cameras.jpg" alt="Labeled diagram of the Perseverance rover showing the positions of its 23 cameras" loading="lazy" /><figcaption>Camera layout</figcaption></figure>
+              <figure><img class="photo" src="docs/research/img/solution-4-perseverance-wheel.jpg" alt="Close-up of a Perseverance aluminum wheel with curved spokes and treads" loading="lazy" /><figcaption>Wheel</figcaption></figure>
+              <figure><img class="photo" src="docs/research/img/solution-4-perseverance-head.jpg" alt="Close-up of the Perseverance mast head with its camera instruments" loading="lazy" /><figcaption>Mast head</figcaption></figure>
+            </div>
+            <a class="src-pdf" href="docs/research/solution-4.pdf" target="_blank" rel="noopener">Open Solution 4 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOLUTION 05</span>
+          <h3><button type="button" class="m-open">xWalker — Inspection and Manipulation for Lunar Assembly</button></h3>
+          <span class="src-meta">NASA TechPort · By Karunya</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">xWalker - Enhanced Inspection and Manipulation for Lunar Assembly, NASA</p>
+            <a class="src-link" href="https://techport.nasa.gov/projects/158648" target="_blank" rel="noopener">techport.nasa.gov/projects/158648 ↗</a>
+            <h5>Product summary</h5>
+            <p>It is an advanced autonomous robotic framework designed to support large-scale infrastructure on the lunar surface. The robot uses specialized locomotion to step across, climb, or walk along structural lattices, allowing it to inspect or add to building frames. It also has high-dexterity manipulation, letting it grasp complex objects and handle sensitive payloads with extreme precision. Overall, xWalker is designed to perform autonomous assembly, outfitting, and inspection in extreme space environments like the lunar surface.</p>
+            <h5>Product critique</h5>
+            <p>xWalker can only lift up to 10&nbsp;kg of payload, so it can only carry a small load. While its 7-DOF arms provide excellent dexterity, its small structural footprint keeps it from matching the reach of deployable booms or crane-based manipulation systems. Our robot will have to carry much heavier and larger loads, using a crane-like robotic arm to carry them.</p>
+            <h5>Images / sketches</h5>
+            <div class="src-figs">
+              <figure><img class="photo" src="docs/research/img/solution-5-xwalker-arm.jpg" alt="Render of xWalker robotic arms working on a lattice structure beside a lunar module" loading="lazy" /><figcaption>Lattice assembly</figcaption></figure>
+              <figure><img class="photo" src="docs/research/img/solution-5-xwalker-crane.jpg" alt="Render of a crane-like lattice structure on the lunar surface lifting a NASA module" loading="lazy" /><figcaption>Crane structure</figcaption></figure>
+            </div>
+            <a class="src-pdf" href="docs/research/solution-5.pdf" target="_blank" rel="noopener">Open Solution 5 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOLUTION 06</span>
+          <h3><button type="button" class="m-open">MDA Skymaker</button></h3>
+          <span class="src-meta">MDA Space · By Abirami</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">MDA Skymaker, MDA Space</p>
+            <a class="src-link" href="https://mda.space/skymaker" target="_blank" rel="noopener">mda.space/skymaker ↗</a>
+            <h5>Product summary</h5>
+            <p>The MDA Skymaker is a commercial suite of scalable, modular space robotics. Its main purpose is to give commercial and government space programs fast and affordable access to advanced human space robotics. It can robotically handle both small payloads and multi-ton cargo, and it can be integrated onto rovers to enable autonomous surface logistics.</p>
+            <h5>Product critique</h5>
+            <p>In terms of our HUNCH project, it covers the autonomous lunar cargo transport that our External Cargo Transport Robot is meant to take care of. However, the MDA Skymaker covers the entire process of transporting astronauts to the Moon, along with developing various space robotics for the journey to the Moon and back. Our rover simply deals with transporting cargo to and from the habitat base.</p>
+            <h5>Images / sketches</h5>
+            <div class="src-figs">
+              <figure><img class="photo" src="docs/research/img/solution-6-skymaker.jpg" alt="Render of the MDA Skymaker robotic arm extended above a spacecraft module" loading="lazy" /><figcaption>Skymaker robotic arm</figcaption></figure>
+            </div>
+            <a class="src-pdf" href="docs/research/solution-6.pdf" target="_blank" rel="noopener">Open Solution 6 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOLUTION 07</span>
+          <h3><button type="button" class="m-open">LSMS — Lunar Surface Manipulation System</button></h3>
+          <span class="src-meta">NASA Technology Transfer · By Abirami</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">Lunar Surface Manipulation System (LAR-TOPS-73), NASA Technology Transfer Program</p>
+            <a class="src-link" href="https://technology.nasa.gov/patent/LAR-TOPS-73" target="_blank" rel="noopener">technology.nasa.gov/patent/LAR-TOPS-73 ↗</a>
+            <h5>Product summary</h5>
+            <p>The Lunar Surface Manipulation System (LSMS) is a hybrid device that combines the strength of a crane with precise robotic manipulation. It is engineered for many tasks on the surface of the Moon (or other planets), such as unloading landers, moving payloads, and installing different types of infrastructure. It's very versatile for lunar exploration, covering important steps such as offloading a lander, positioning itself precisely around the cargo, and swapping between tools for efficiency.</p>
+            <h5>Product critique</h5>
+            <p>We can take inspiration from this product for part of our robot. We need to design a robotic arm that will pick up various sizes of cargo and place it inside our robot. This design uses several robotic joints and a heightened crane capacity. It acts as a crane hybrid that can be mounted either near a lander or on top of a mobile base.</p>
+            <h5>Images / sketches</h5>
+            <div class="src-figs">
+              <figure><img class="photo" src="docs/research/img/solution-7-lsms.jpg" alt="The LSMS crane arm lifting a payload beside a NASA lander mock-up during an outdoor field test" loading="lazy" /><figcaption>LSMS field test</figcaption></figure>
+            </div>
+            <a class="src-pdf" href="docs/research/solution-7.pdf" target="_blank" rel="noopener">Open Solution 7 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOLUTION 08</span>
+          <h3><button type="button" class="m-open">CLPS — Commercial Lunar Payload Services</button></h3>
+          <span class="src-meta">NASA · By Abirami</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">Commercial Lunar Payload Services, NASA</p>
+            <a class="src-link" href="https://www.nasa.gov/commercial-lunar-payload-services/" target="_blank" rel="noopener">nasa.gov/commercial-lunar-payload-services ↗</a>
+            <h5>Product summary</h5>
+            <p>NASA's Commercial Lunar Payload Services (CLPS) initiative is a contract model in which NASA buys payload transportation from private US companies. It accepts higher mission risk in exchange for better affordability, rapid iteration, and a much more commercial lunar economy. Lunar surface cargo transport works in a three-phase workflow to handle moving payloads across the Moon.</p>
+            <h5>Product critique</h5>
+            <p>This product primarily deals with the commercial system as a whole, in which cargo transport is only a small part. Since the system is focused on the commercial business, it doesn't deal with the intricacies of transporting cargo. However, the workflow process will be helpful for our design.</p>
+            <h5>Images / sketches</h5>
+            <div class="src-figs">
+              <figure><img class="photo" src="docs/research/img/solution-8-clps-lander.jpg" alt="Render of the Blue Moon cargo lander standing on the lunar surface" loading="lazy" /><figcaption>Commercial cargo lander</figcaption></figure>
+            </div>
+            <a class="src-pdf" href="docs/research/solution-8.pdf" target="_blank" rel="noopener">Open Solution 8 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOLUTION 09</span>
+          <h3><button type="button" class="m-open">Lunar Outpost Pegasus LTV</button></h3>
+          <span class="src-meta">Lunar Outpost · By Abirami</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">Pegasus Lunar Terrain Vehicle, Lunar Outpost</p>
+            <a class="src-link" href="https://www.lunaroutpost.com/pegasus" target="_blank" rel="noopener">lunaroutpost.com/pegasus ↗</a>
+            <h5>Product summary</h5>
+            <p>The Lunar Outpost Pegasus is a next-generation crewed Lunar Terrain Vehicle (LTV) selected by NASA to transport Artemis astronauts across the lunar surface at the Moon's South Pole. It provides critical surface mobility for operational duties and works autonomously as well as by teleoperation, which gives it flexibility across multiple missions.</p>
+            <h5>Product critique</h5>
+            <p>The Pegasus LTV can help us design autonomous movement across the lunar surface in every aspect. Our robot must transport cargo from the payload lander to the habitat autonomously, and this LTV covers almost all of those aspects: movement across lunar terrain, autonomous systems, and surface mobility. However, it primarily transports astronauts, while our robot is for transporting cargo.</p>
+            <h5>Images / sketches</h5>
+            <div class="src-figs">
+              <figure><img class="photo" src="docs/research/img/solution-9-pegasus.jpg" alt="Render of two Pegasus lunar terrain vehicles with astronauts on the lunar surface" loading="lazy" /><figcaption>Pegasus LTV</figcaption></figure>
+            </div>
+            <a class="src-pdf" href="docs/research/solution-9.pdf" target="_blank" rel="noopener">Open Solution 9 (PDF) ↗</a>
+          </div>
+        </article>
+
+        <article class="src">
+          <span class="m-n">SOLUTION 10</span>
+          <h3><button type="button" class="m-open">Astrolab CLV-1 Lunar Rover</button></h3>
+          <span class="src-meta">Astrolab · By Abirami</span>
+          <div class="src-body">
+            <h5>Source</h5>
+            <p class="cite">NASA selects Astrolab to provide lunar rover for Artemis astronauts' return to the Moon, Astrolab</p>
+            <a class="src-link" href="https://www.astrolab.space/2026/05/26/nasa-selects-astrolab-to-provide-lunar-rover-for-artemis-astronauts-return-to-the-moon/" target="_blank" rel="noopener">astrolab.space/…/nasa-selects-astrolab… ↗</a>
+            <h5>Product summary</h5>
+            <p>The Astrolab CLV-1 is a crewed lunar rover chosen by NASA to support astronaut missions and carry cargo at the Moon's south pole. It can be driven by astronauts or operated remotely during the night. It can carry two suited astronauts as well as heavy supplies, and it can conduct select surface operations remotely.</p>
+            <h5>Product critique</h5>
+            <p>Rather than carrying external payloads, this rover focuses on carrying the astronauts and their supplies. Our robot must carry other cargo pods and adapt to their sizes while also navigating across the lunar surface. However, the rest of the rover aligns with our robot: autonomous navigation across the lunar surface with enough space to carry certain supplies.</p>
+            <h5>Images / sketches</h5>
+            <div class="src-figs">
+              <figure><img class="photo" src="docs/research/img/solution-10-astrolab.jpg" alt="Render of the Astrolab lunar rover with its lights on, driving across the lunar surface" loading="lazy" /><figcaption>Astrolab rover</figcaption></figure>
+            </div>
+            <a class="src-pdf" href="docs/research/solution-10.pdf" target="_blank" rel="noopener">Open Solution 10 (PDF) ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="doc-foot">
+      <a class="cta" href="index.html#research">
+        <span class="cta-n">←</span>
+        <span class="cta-l">RETURN TO MISSION</span>
+      </a>
+    </footer>
+  </main>
+
+  <dialog id="m-dialog" class="m-dialog src-dialog" aria-labelledby="md-title">
+    <div class="md-head">
+      <span class="m-n" id="md-n"></span>
+      <button type="button" class="md-close" id="md-close" aria-label="Close">✕</button>
+    </div>
+    <h4 id="md-title"></h4>
+    <span class="src-meta" id="md-meta"></span>
+    <div class="md-body" id="md-body"></div>
+    <div class="md-nav">
+      <button type="button" id="md-prev">← PREV</button>
+      <button type="button" id="md-next">NEXT →</button>
+    </div>
+  </dialog>
+
+  <script src="js/stars.js"></script>
+  <script>
+    // Source cards open a pop-up with the full research sheet; prev/next step within the same category.
+    (() => {
+      const dlg = document.getElementById("m-dialog");
+      const $ = (id) => document.getElementById(id);
+      let group = [], cur = 0;
+      const show = (i) => {
+        cur = (i + group.length) % group.length;
+        const c = group[cur];
+        $("md-n").textContent = c.querySelector(".m-n").textContent;
+        $("md-title").textContent = c.querySelector(".m-open").textContent;
+        $("md-meta").textContent = c.querySelector(".src-meta").textContent;
+        $("md-body").innerHTML = c.querySelector(".src-body").innerHTML;
+        $("md-body").scrollTop = 0;
+        if (!dlg.open) dlg.showModal();
+      };
+      document.querySelectorAll(".sources").forEach((list) => {
+        const cards = [...list.querySelectorAll(".src")];
+        cards.forEach((c, i) => c.querySelector(".m-open").addEventListener("click", () => { group = cards; show(i); }));
+      });
+      $("md-close").addEventListener("click", () => dlg.close());
+      $("md-prev").addEventListener("click", () => show(cur - 1));
+      $("md-next").addEventListener("click", () => show(cur + 1));
+      dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+      dlg.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") show(cur + 1);
+        if (e.key === "ArrowLeft") show(cur - 1);
+      });
+    })();
+  </script>
+  <script>
+    // Category buttons: show one panel at a time; the URL hash remembers the choice.
+    (() => {
+      const tabs = [...document.querySelectorAll(".r-tab")];
+      const select = (key, scroll) => {
+        for (const t of tabs) {
+          const on = t.dataset.key === key;
+          t.setAttribute("aria-selected", on);
+          const panel = document.getElementById(t.dataset.key);
+          panel.hidden = !on;
+          if (on) {
+            panel.classList.remove("in"); void panel.offsetWidth; panel.classList.add("in");
+            if (scroll) panel.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
+        history.replaceState(null, "", "#" + key);
+      };
+      tabs.forEach((t) => t.addEventListener("click", () => select(t.dataset.key, true)));
+      const start = location.hash.slice(1);
+      if (tabs.some((t) => t.dataset.key === start)) select(start, false);
+
+      const hero = document.querySelector(".doc-hero");
+      requestAnimationFrame(() => hero.classList.add("in"));
+    })();
+  </script>
+</body>
+</html>

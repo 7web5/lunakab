@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <title>LunaKAB — NASA HUNCH</title>
+  <meta name="description" content="LunaKAB · External Cargo Transport — an autonomous lunar logistics robot for NASA HUNCH." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- ============ 3D ENVIRONMENT (fixed behind everything) ============ -->
+  <canvas id="scene"></canvas>
+  <div id="vignette" aria-hidden="true"></div>
+  <div id="scanline" aria-hidden="true"></div>
+
+  <!-- ============ BOOT / INTRO SEQUENCE ============ -->
+  <div id="boot" role="dialog" aria-label="Mission computer initializing">
+    <div class="boot-inner">
+      <div class="boot-status" id="boot-status">INITIALIZING GUIDANCE COMPUTER</div>
+      <img class="boot-logo" id="boot-logo" src="assets/logo-mark.svg" alt="" />
+      <h1 class="boot-title" id="boot-title" aria-hidden="true"></h1>
+      <div class="boot-sub" id="boot-sub" aria-hidden="true"></div>
+      <div class="boot-tag" id="boot-tag" aria-hidden="true"></div>
+      <div class="boot-bar" id="boot-bar"><span></span></div>
+    </div>
+    <button id="boot-skip" type="button">SKIP INITIALIZATION</button>
+  </div>
+
+  <!-- ============ PERSISTENT HUD ============ -->
+  <div id="hud" aria-hidden="true">
+    <!-- Corner brackets for the framed-instrument feel -->
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+
+    <header class="hud-top">
+      <div class="mark">
+        <img class="mark-icon" src="assets/logo-mark.svg" alt="" />
+        <span class="mark-text">
+          <span class="mark-title">LUNA<span class="kab">KAB</span></span>
+          <span class="mark-sub">NASA HUNCH</span>
+        </span>
+      </div>
+      <div class="hud-clock">
+        <span class="lbl">MET</span>
+        <span class="val" id="met-clock">00:00:00</span>
+        <span class="lbl coord" id="coord">LAT —  ·  LON —</span>
+      </div>
+    </header>
+
+    <!-- Minimal telemetry-style navigation -->
+    <nav id="nav">
+      <ul>
+        <li data-target="0"><i>01</i><span>OVERVIEW</span></li>
+        <li data-target="1"><i>02</i><span>PROBLEM</span></li>
+        <li data-target="2"><i>03</i><span>RESEARCH</span></li>
+        <li data-target="3"><i>04</i><span>DESIGNS</span></li>
+        <li data-target="4"><i>05</i><span>PROTOTYPING</span></li>
+        <li data-target="5"><i>06</i><span>LUNAKAB</span></li>
+      </ul>
+    </nav>
+
+    <!-- Mission status, lower-left -->
+    <div class="hud-status">
+      <div class="row"><span class="lbl">MISSION STATUS</span><span class="val" id="mstatus">STANDBY</span></div>
+      <div class="row"><span class="lbl">PHASE</span><span class="val" id="mphase">— / —</span></div>
+    </div>
+
+    <!-- Live telemetry, lower-right -->
+    <div class="hud-telemetry">
+      <div class="trow"><span class="lbl">DISTANCE</span><span class="val" id="t-distance">—</span></div>
+      <div class="trow"><span class="lbl">PAYLOAD</span><span class="val" id="t-payload">EMPTY</span></div>
+      <div class="trow"><span class="lbl">DOCKING</span><span class="val" id="t-docking">STANDBY</span></div>
+      <div class="tbar"><span id="t-bar"></span></div>
+    </div>
+
+    <!-- Scroll affordance -->
+    <div class="scroll-hint" id="scroll-hint">
+      <span>SCROLL TO DESCEND</span>
+      <span class="chev"></span>
+    </div>
+  </div>
+
+  <!-- ============ MARKER LAYER (HUD map pins projected from 3D) ============ -->
+  <div id="markers" aria-hidden="true"></div>
+
+  <!-- ============ SCROLLING NARRATIVE ============ -->
+  <main id="scroll">
+    <section class="chapter" data-section="0">
+      <div class="panel center">
+        <span class="eyebrow">01 / PROJECT OVERVIEW</span>
+        <h2>EXTERNAL CARGO TRANSPORT</h2>
+        <p>An autonomous ground robot for the lunar surface — receiving payloads from the lander and delivering them, unassisted, to the habitat supply port.</p>
+        <span class="hint">Drag to look · scroll to descend</span>
+      </div>
+    </section>
+
+    <section class="chapter" data-section="1">
+      <div class="panel">
+        <span class="eyebrow">02 / PROBLEM</span>
+        <h2>FROM LANDING PAD TO HABITAT</h2>
+        <p>A ~40&nbsp;ft cargo module lands far from the habitat to avoid plume contamination. It must be moved to the supply building and docked to a pressurized port — without human EVA wherever possible.</p>
+        <a class="cta" href="problem.html">
+          <span class="cta-n">02</span>
+          <span class="cta-l">VIEW PROBLEM BRIEF</span>
+          <span class="cta-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="chapter" data-section="2">
+      <div class="panel">
+        <span class="eyebrow">03 / RESEARCH</span>
+        <h2>WHAT WE LEARNED</h2>
+        <p>Articles, patent searches and previous solutions that shaped our approach to lunar cargo transport.</p>
+        <a class="cta" href="research.html">
+          <span class="cta-n">03</span>
+          <span class="cta-l">VIEW RESEARCH</span>
+          <span class="cta-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="chapter" data-section="3">
+      <div class="panel">
+        <span class="eyebrow">04 / BRAINSTORMING / DESIGNS</span>
+        <h2>LOAD THE BAY</h2>
+        <p>Out from the habitat to the payloader. Nose-in, a hatch slides open and the horizontal crane reaches into the payloader's hold, lifts a piece and draws it back inside onto the conveyor, which indexes it rearward for the next. Four pieces, then the hatch closes and the robot turns for home.</p>
+        <div class="cta-row">
+          <a class="cta" href="designs.html#cad">
+            <span class="cta-n">04A</span>
+            <span class="cta-l">CAD MODELS</span>
+            <span class="cta-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="cta" href="designs.html#sketches">
+            <span class="cta-n">04B</span>
+            <span class="cta-l">SKETCHES</span>
+            <span class="cta-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" data-section="4">
+      <div class="panel">
+        <span class="eyebrow">05 / PROTOTYPING</span>
+        <h2>CROSSING THE REGOLITH</h2>
+        <p>Fully autonomous, the robot navigates around obstacles toward the habitat — continuously tracking distance, heading and payload integrity across open terrain.</p>
+      </div>
+    </section>
+
+    <section class="chapter" data-section="5">
+      <div class="panel">
+        <span class="eyebrow">06 / THE LUNAKAB</span>
+        <h2>MEET THE LUNAKAB</h2>
+        <p>See the robot for yourself. Watch it in action in our videos, flip through the project brochure, explore the LunaKAB logo, or step into the subsystems view to inspect each part of the design up close — from the corner wheels and horizontal crane to the conveyor and sliding rear door.</p>
+        <div class="cta-row">
+          <a class="cta" href="lunakab.html#videos">
+            <span class="cta-n">06A</span>
+            <span class="cta-l">VIDEOS</span>
+            <span class="cta-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="cta" href="lunakab.html#brochure">
+            <span class="cta-n">06B</span>
+            <span class="cta-l">BROCHURE</span>
+            <span class="cta-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="cta" href="lunakab.html#logo">
+            <span class="cta-n">06C</span>
+            <span class="cta-l">LOGO</span>
+            <span class="cta-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="cta" href="subsystems.html">
+            <span class="cta-n">06D</span>
+            <span class="cta-l">SUBSYSTEMS</span>
+            <span class="cta-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" data-section="6">
+      <div class="panel">
+        <span class="eyebrow">07 / SUBSYSTEMS</span>
+        <h2>INSIDE THE TRANSPORT</h2>
+        <p>Eight subsystems make the delivery possible — from the corner wheels and horizontal crane to the conveyor, sliding rear door and dust vacuum. Step onto the surface and inspect each one up close.</p>
+        <a class="cta" href="subsystems.html">
+          <span class="cta-n">07</span>
+          <span class="cta-l">VIEW SUBSYSTEMS</span>
+          <span class="cta-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="chapter" data-section="7">
+      <div class="panel center final">
+        <div class="mc-stack">
+          <div class="mc-line" data-mc="0">MISSION COMPLETE</div>
+          <div class="mc-line" data-mc="1">CARGO DELIVERED</div>
+          <div class="mc-line" data-mc="2">DOCKING SUCCESSFUL</div>
+        </div>
+        <div class="final-mark">
+          <img class="fm-logo" src="assets/logo-mark.svg" alt="" />
+          <span class="fm-title">LUNA<span class="kab">KAB</span></span>
+          <span class="fm-rule" aria-hidden="true"></span>
+          <span class="fm-sub">LUNAR CARGO ROBOTICS</span>
+          <span class="fm-tag">NASA HUNCH · EXTERNAL CARGO TRANSPORT</span>
+        </div>
+        <button id="replay" type="button">▷ RUN FULL SIMULATION</button>
+      </div>
+    </section>
+  </main>
+
+  <noscript>
+    <div style="position:fixed;inset:0;display:grid;place-items:center;background:#000;color:#fff;font-family:sans-serif;text-align:center;padding:2rem;">
+      This mission interface requires JavaScript and WebGL.
+    </div>
+  </noscript>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

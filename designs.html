@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <title>LunaKAB — Designs</title>
+  <meta name="description" content="LunaKAB brainstorming and designs: CAD models and sketches." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/problem.css" />
+  <link rel="stylesheet" href="css/research.css" />
+  <link rel="stylesheet" href="css/designs.css" />
+</head>
+<body class="doc-page">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div id="vignette" aria-hidden="true"></div>
+  <div id="scanline" aria-hidden="true"></div>
+  <span class="corner tl"></span><span class="corner tr"></span>
+  <span class="corner bl"></span><span class="corner br"></span>
+
+  <header class="doc-top">
+    <a class="mark" href="index.html#designs" aria-label="Back to the mission">
+      <img class="mark-icon" src="assets/logo-mark.svg" alt="" />
+      <span class="mark-text">
+        <span class="mark-title">LUNA<span class="kab">KAB</span></span>
+        <span class="mark-sub">NASA HUNCH</span>
+      </span>
+    </a>
+    <a class="doc-back" href="index.html#designs"><span aria-hidden="true">←</span> RETURN TO MISSION</a>
+  </header>
+
+  <main class="doc doc-narrow">
+    <section class="doc-hero">
+      <span class="eyebrow">04 / BRAINSTORMING / DESIGNS</span>
+      <h1>Designs</h1>
+      <p class="lede">How the LunaKAB took shape — from first sketches to CAD. Choose a category to explore.</p>
+    </section>
+
+    <div class="r-tabs d-tabs" role="tablist" aria-label="Design categories">
+      <button class="r-tab" role="tab" id="tab-cad" aria-controls="cad" aria-selected="false" data-key="cad">
+        <span class="r-n">A</span>
+        <span class="r-l">CAD Models</span>
+        <span class="r-d">3D models of the robot, crane, conveyor and docking hardware</span>
+        <span class="r-arrow" aria-hidden="true">→</span>
+      </button>
+      <button class="r-tab" role="tab" id="tab-sketches" aria-controls="sketches" aria-selected="false" data-key="sketches">
+        <span class="r-n">B</span>
+        <span class="r-l">Sketches</span>
+        <span class="r-d">Hand-drawn concepts and brainstorming from early in the design process</span>
+        <span class="r-arrow" aria-hidden="true">→</span>
+      </button>
+    </div>
+
+    <section class="r-panel" role="tabpanel" id="cad" aria-labelledby="tab-cad" hidden>
+      <h2><i>A</i>CAD Models</h2>
+      <div class="gallery" data-gallery="cad"></div>
+    </section>
+
+    <section class="r-panel" role="tabpanel" id="sketches" aria-labelledby="tab-sketches" hidden>
+      <h2><i>B</i>Sketches</h2>
+      <div class="gallery" data-gallery="sketches"></div>
+    </section>
+
+    <footer class="doc-foot">
+      <a class="cta" href="index.html#designs">
+        <span class="cta-n">←</span>
+        <span class="cta-l">RETURN TO MISSION</span>
+      </a>
+    </footer>
+  </main>
+
+  <dialog id="lightbox" class="m-dialog lightbox" aria-labelledby="lb-title">
+    <div class="md-head">
+      <span class="m-n" id="lb-n"></span>
+      <button type="button" class="md-close" id="lb-close" aria-label="Close">✕</button>
+    </div>
+    <img id="lb-img" alt="" />
+    <h4 id="lb-title"></h4>
+    <p class="lb-note" id="lb-note"></p>
+    <dl class="lb-specs" id="lb-specs"></dl>
+    <a class="src-pdf lb-link" id="lb-link" target="_blank" rel="noopener">Open in Onshape ↗</a>
+    <div class="md-nav">
+      <button type="button" id="lb-prev">← PREV</button>
+      <button type="button" id="lb-next">NEXT →</button>
+    </div>
+  </dialog>
+
+  <script src="js/stars.js"></script>
+  <script>
+    // Gallery contents. Add an entry per image: files live in docs/designs/cad/
+    // and docs/designs/sketches/. `note`, `specs` ([label, value] rows) and
+    // `link` (e.g. the Onshape document) are optional.
+    const DESIGNS = {
+      cad: [
+        {
+          src: "docs/designs/cad/door-slider.jpg",
+          title: "Door Slider",
+          note: "The sliding door panel. A flat plate with gear-rack teeth cut along both long edges, so pinion gears can drive it open and closed. The plate is one extrude; the rack teeth are a second extrude, mirrored to the opposite edge.",
+          specs: [
+            ["WIDTH", "4.5 in"], ["TOP FACE", "33.25 in²"], ["DRIVE", "RACK & PINION"],
+            ["TOOTH LENGTH", "0.250 in"], ["TOOTH WIDTH", "0.033 in"], ["TOOTH HEIGHT", "0.094 in"],
+            ["TOOTH PITCH", "0.132 in"], ["PARTS", "1"], ["TOOL", "ONSHAPE"],
+          ],
+          link: "https://cad.onshape.com/documents/5fe72cf5069ea7a9b403b16c/w/b33d764fe87e025053045eb9/e/405d4cfcd6099a60586ef2a8",
+        },
+        {
+          src: "docs/designs/cad/base-prototype.jpg",
+          title: "Base Prototype",
+          note: "An early prototype of the robot's base, not used in the final design. A long box with rounded corners, a recessed tray along the top and pins on the sides, built up from twelve extrudes and a fillet.",
+          specs: [["STATUS", "NOT USED"], ["FEATURES", "12 EXTRUDES + FILLET"], ["PARTS", "1"], ["TOOL", "ONSHAPE"]],
+          link: "https://cad.onshape.com/documents/2a5a179df714c3a7d14333f6/w/7ebd7c9726d9f615905254fb/e/f16afeb0ec4dbe46f4dcfdd9",
+        },
+      ],
+      sketches: [
+        {
+          src: "docs/designs/sketches/early-concept-top-arm.svg",
+          title: "Early Concept — Top-Mounted Arm",
+          note: "An early idea, not used in the final design. The arm sat on a turret on the roof: a sliding door on top slid back on rails, the boom reached out over the cargo and a telescoping section extended down to grab it, then the arm swung back and lowered the cargo through the roof opening onto the conveyor.",
+          specs: [["STATUS", "NOT USED"], ["ARM", "ROOF TURRET"], ["DOOR", "SLIDING ROOF"]],
+        },
+      ],
+    };
+
+    // Build each gallery; clicking a figure opens the lightbox, prev/next stay in that gallery.
+    (() => {
+      const $ = (id) => document.getElementById(id);
+      const dlg = $("lightbox");
+      let group = [], cur = 0, label = "";
+      const show = (i) => {
+        cur = (i + group.length) % group.length;
+        const d = group[cur];
+        $("lb-n").textContent = `${label} ${String(cur + 1).padStart(2, "0")} / ${String(group.length).padStart(2, "0")}`;
+        $("lb-img").src = d.src;
+        $("lb-img").alt = d.title;
+        $("lb-title").textContent = d.title;
+        $("lb-note").textContent = d.note || "";
+        $("lb-note").hidden = !d.note;
+        const specs = $("lb-specs");
+        specs.replaceChildren(...(d.specs || []).map(([k, v]) => {
+          const row = document.createElement("div"), dt = document.createElement("dt"), dd = document.createElement("dd");
+          dt.textContent = k; dd.textContent = v; row.append(dt, dd); return row;
+        }));
+        specs.hidden = !d.specs;
+        $("lb-link").hidden = !d.link;
+        if (d.link) $("lb-link").href = d.link;
+        if (!dlg.open) dlg.showModal();
+      };
+      document.querySelectorAll(".gallery").forEach((el) => {
+        const key = el.dataset.gallery, items = DESIGNS[key];
+        const name = key === "cad" ? "CAD" : "SKETCH";
+        if (!items.length) {
+          el.innerHTML = `<p class="r-empty">${key === "cad" ? "CAD models" : "Sketches"} coming soon</p>`;
+          return;
+        }
+        items.forEach((d, i) => {
+          const fig = document.createElement("figure");
+          fig.className = "g-item";
+          fig.innerHTML = `<button type="button" class="g-open"><img loading="lazy" alt=""></button>
+            <figcaption><span class="m-n">${name} ${String(i + 1).padStart(2, "0")}</span><span class="g-title"></span><span class="g-note"></span></figcaption>`;
+          fig.querySelector("img").src = d.src;
+          fig.querySelector("img").alt = d.title;
+          fig.querySelector(".g-title").textContent = d.title;
+          fig.querySelector(".g-note").textContent = d.specs ? d.specs.slice(0, 3).map((s) => s[1]).join(" · ") : "";
+          fig.querySelector(".g-open").addEventListener("click", () => { group = items; label = name; show(i); });
+          el.appendChild(fig);
+        });
+      });
+      $("lb-close").addEventListener("click", () => dlg.close());
+      $("lb-prev").addEventListener("click", () => show(cur - 1));
+      $("lb-next").addEventListener("click", () => show(cur + 1));
+      dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+      dlg.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") show(cur + 1);
+        if (e.key === "ArrowLeft") show(cur - 1);
+      });
+    })();
+  </script>
+  <script>
+    // Category buttons: show one panel at a time; the URL hash remembers the choice.
+    (() => {
+      const tabs = [...document.querySelectorAll(".r-tab")];
+      const select = (key, scroll) => {
+        for (const t of tabs) {
+          const on = t.dataset.key === key;
+          t.setAttribute("aria-selected", on);
+          const panel = document.getElementById(t.dataset.key);
+          panel.hidden = !on;
+          if (on) {
+            panel.classList.remove("in"); void panel.offsetWidth; panel.classList.add("in");
+            if (scroll) panel.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
+        history.replaceState(null, "", "#" + key);
+      };
+      tabs.forEach((t) => t.addEventListener("click", () => select(t.dataset.key, true)));
+      const start = location.hash.slice(1);
+      if (tabs.some((t) => t.dataset.key === start)) select(start, false);
+
+      const hero = document.querySelector(".doc-hero");
+      requestAnimationFrame(() => hero.classList.add("in"));
+    })();
+  </script>
+</body>
+</html>
