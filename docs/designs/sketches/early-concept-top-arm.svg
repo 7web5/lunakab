@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="1200" height="820">
+  <defs>
+    <!-- Slight wobble so the lines read as hand-drawn pencil -->
+    <filter id="pencil" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="9" stroke="#8a8f96" stroke-width="1"/>
+    </pattern>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#dfe6ee" stroke-width="1"/>
+    </pattern>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#2b5d8a"/>
+    </marker>
+    <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5">
+      <circle cx="5" cy="5" r="3.5" fill="#2a2d31"/>
+    </marker>
+  </defs>
+
+  <!-- Paper -->
+  <rect width="1200" height="820" fill="#f7f5ef"/>
+  <rect width="1200" height="820" fill="url(#grid)" opacity="0.7"/>
+
+  <g font-family="'Segoe Print','Bradley Hand','Comic Sans MS',cursive" fill="#2a2d31">
+    <text x="48" y="64" font-size="30" font-weight="700">LunaKAB — early concept</text>
+    <text x="48" y="96" font-size="19" fill="#555b62">top-mounted arm + sliding roof door (not used in the final design)</text>
+    <text x="1152" y="64" font-size="18" text-anchor="end" fill="#555b62">SKETCH 01</text>
+  </g>
+
+  <!-- ================= SIDE VIEW ================= -->
+  <g filter="url(#pencil)" stroke="#2a2d31" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- ground -->
+    <path d="M40 640 C 300 636, 600 644, 1160 638" stroke-width="2"/>
+    <path d="M60 652 l14 -12 M120 652 l14 -12 M180 652 l14 -12 M240 652 l14 -12 M720 652 l14 -12 M780 652 l14 -12 M980 652 l14 -12 M1040 652 l14 -12" stroke-width="1.2" stroke="#7a7f86"/>
+
+    <!-- body (box) -->
+    <rect x="170" y="400" width="470" height="180" rx="6" stroke-width="3.2" fill="#f7f5ef"/>
+    <path d="M170 440 H640" stroke-width="1.4" stroke="#7a7f86"/>
+    <!-- rear door outline -->
+    <rect x="182" y="455" width="56" height="110" stroke-width="1.6"/>
+    <!-- conveyor inside (dashed) -->
+    <path d="M250 548 H600" stroke-width="1.6" stroke-dasharray="8 6"/>
+    <circle cx="258" cy="548" r="7" stroke-width="1.4" stroke-dasharray="3 3"/>
+    <circle cx="592" cy="548" r="7" stroke-width="1.4" stroke-dasharray="3 3"/>
+    <!-- cargo already inside (dashed) -->
+    <rect x="300" y="502" width="58" height="42" stroke-width="1.4" stroke-dasharray="6 5"/>
+    <rect x="380" y="502" width="58" height="42" stroke-width="1.4" stroke-dasharray="6 5"/>
+    <!-- front sensors -->
+    <rect x="640" y="452" width="12" height="40" stroke-width="2"/>
+    <circle cx="646" cy="462" r="3.5" stroke-width="1.6"/>
+    <circle cx="646" cy="480" r="3.5" stroke-width="1.6"/>
+
+    <!-- wheels (4 corners, side view shows 2) -->
+    <circle cx="250" cy="595" r="45" stroke-width="3.2" fill="#f7f5ef"/>
+    <circle cx="250" cy="595" r="16" stroke-width="2"/>
+    <circle cx="562" cy="595" r="45" stroke-width="3.2" fill="#f7f5ef"/>
+    <circle cx="562" cy="595" r="16" stroke-width="2"/>
+    <path d="M214 568 l10 8 M286 568 l-10 8 M214 622 l10 -8 M286 622 l-10 -8" stroke-width="1.4"/>
+    <path d="M526 568 l10 8 M598 568 l-10 8 M526 622 l10 -8 M598 622 l-10 -8" stroke-width="1.4"/>
+
+    <!-- roof: rails + sliding door (shown slid back = open) -->
+    <path d="M190 398 H630" stroke-width="1.6"/>
+    <path d="M190 390 H630" stroke-width="1.2" stroke="#7a7f86"/>
+    <rect x="222" y="376" width="188" height="14" stroke-width="2.4" fill="url(#hatch)"/>
+    <!-- open slot in roof where the door was -->
+    <path d="M420 400 H590" stroke-width="3" stroke="#f7f5ef"/>
+    <path d="M420 400 v-6 M590 400 v-6" stroke-width="1.6"/>
+    <!-- door closed position (ghost) -->
+    <rect x="412" y="376" width="188" height="14" stroke-width="1.2" stroke-dasharray="5 5" stroke="#8a8f96"/>
+
+    <!-- arm: turret on the roof, boom forward, telescoping drop down -->
+    <rect x="172" y="340" width="44" height="58" rx="4" stroke-width="2.6" fill="#f7f5ef"/>
+    <circle cx="194" cy="340" r="12" stroke-width="2.4" fill="#f7f5ef"/>
+    <path d="M194 336 L 790 300" stroke-width="10" stroke="#2a2d31"/>
+    <path d="M194 336 L 790 300" stroke-width="5" stroke="#f7f5ef"/>
+    <!-- elbow + vertical telescoping section -->
+    <circle cx="792" cy="300" r="11" stroke-width="2.4" fill="#f7f5ef"/>
+    <rect x="782" y="310" width="20" height="120" stroke-width="2.4" fill="#f7f5ef"/>
+    <rect x="786" y="430" width="12" height="96" stroke-width="2.2" fill="#f7f5ef"/>
+    <!-- gripper -->
+    <path d="M770 526 H814" stroke-width="3"/>
+    <path d="M772 526 l-6 34 M812 526 l6 34" stroke-width="3"/>
+    <!-- cargo on the ground -->
+    <rect x="752" y="560" width="80" height="78" stroke-width="3" fill="#f7f5ef"/>
+    <path d="M752 586 H832 M792 560 V638" stroke-width="1.2" stroke="#7a7f86"/>
+
+    <!-- arm ghost: swung back over the roof opening, lowering cargo in -->
+    <path d="M194 336 L 505 300" stroke-width="1.6" stroke-dasharray="7 6" stroke="#6b8db0"/>
+    <path d="M505 300 V 470" stroke-width="1.6" stroke-dasharray="7 6" stroke="#6b8db0"/>
+    <rect x="477" y="470" width="56" height="40" stroke-width="1.6" stroke-dasharray="7 6" stroke="#6b8db0"/>
+  </g>
+
+  <!-- motion arrows -->
+  <g stroke="#2b5d8a" stroke-width="2.4" fill="none" stroke-linecap="round">
+    <path d="M830 330 V 500" marker-start="url(#arr)" marker-end="url(#arr)"/>
+    <path d="M200 318 C 240 272, 360 262, 440 278" marker-end="url(#arr)" stroke-dasharray="2 0"/>
+    <path d="M410 360 H 560" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  </g>
+
+  <!-- labels -->
+  <g font-family="'Segoe Print','Bradley Hand','Comic Sans MS',cursive" font-size="18" fill="#2a2d31">
+    <g stroke="#2a2d31" stroke-width="1.2" fill="none">
+      <path d="M190 328 C 176 290, 150 256, 130 236" marker-end="url(#dot)"/>
+      <path d="M640 306 C 650 280, 660 268, 670 262"/>
+      <path d="M316 378 C 316 300, 280 200, 330 150"/>
+      <path d="M812 546 C 880 560, 920 520, 950 500"/>
+      <path d="M832 610 C 900 620, 940 620, 980 612"/>
+      <path d="M600 548 C 700 600, 760 700, 760 720"/>
+      <path d="M210 470 C 120 470, 100 520, 96 540"/>
+      <path d="M562 640 C 560 690, 470 720, 420 726"/>
+      <path d="M652 462 C 680 452, 690 440, 694 432"/>
+    </g>
+    <text x="40" y="226">arm turret (rotates)</text>
+    <text x="560" y="254">boom reaches out over the cargo</text>
+    <text x="336" y="146">sliding roof door — slides back + forth on rails</text>
+    <text x="955" y="498">telescoping section</text>
+    <text x="955" y="520">extends DOWN to grab</text>
+    <text x="986" y="618">cargo</text>
+    <text x="660" y="742">conveyor inside the bay</text>
+    <text x="30" y="562">rear door</text>
+    <text x="250" y="744">4 wheels, one per corner</text>
+    <text x="660" y="424" font-size="15">front sensors</text>
+    <text x="844" y="420" font-size="16" fill="#2b5d8a">up / down</text>
+    <text x="436" y="352" font-size="16" fill="#2b5d8a">door slides</text>
+    <text x="300" y="262" font-size="16" fill="#2b5d8a">swings back</text>
+    <text x="496" y="440" font-size="15" fill="#6b8db0" text-anchor="end">drops cargo in</text>
+    <text x="496" y="458" font-size="15" fill="#6b8db0" text-anchor="end">through the roof</text>
+  </g>
+
+  <!-- ================= TOP VIEW (inset) ================= -->
+  <g transform="translate(860 120)">
+    <rect x="-16" y="-14" width="312" height="216" fill="#f7f5ef" stroke="#b9bfc6" stroke-width="1"/>
+    <g filter="url(#pencil)" stroke="#2a2d31" stroke-linecap="round" fill="none">
+      <rect x="40" y="40" width="200" height="120" stroke-width="2.6"/>
+      <!-- wheels at the corners -->
+      <rect x="22" y="26" width="34" height="18" stroke-width="2"/>
+      <rect x="224" y="26" width="34" height="18" stroke-width="2"/>
+      <rect x="22" y="156" width="34" height="18" stroke-width="2"/>
+      <rect x="224" y="156" width="34" height="18" stroke-width="2"/>
+      <!-- rails -->
+      <path d="M52 58 H228 M52 142 H228" stroke-width="1.3" stroke="#7a7f86"/>
+      <!-- door slid back, opening ahead of it -->
+      <rect x="56" y="62" width="80" height="76" stroke-width="2.2" fill="url(#hatch)"/>
+      <rect x="140" y="62" width="84" height="76" stroke-width="1.2" stroke-dasharray="5 5"/>
+      <!-- turret -->
+      <circle cx="70" cy="100" r="9" stroke-width="2" fill="#f7f5ef"/>
+    </g>
+    <g stroke="#2b5d8a" stroke-width="2.2" fill="none"><path d="M100 22 H200" marker-start="url(#arr)" marker-end="url(#arr)"/></g>
+    <g font-family="'Segoe Print','Bradley Hand','Comic Sans MS',cursive" fill="#2a2d31">
+      <text x="0" y="0" font-size="15" fill="#555b62">TOP VIEW</text>
+      <text x="150" y="196" font-size="14" text-anchor="middle">roof opening when the door is slid back</text>
+      <text x="268" y="104" font-size="13" fill="#555b62">front</text>
+      <text x="-2" y="104" font-size="13" fill="#555b62">rear</text>
+    </g>
+  </g>
+
+  <!-- steps -->
+  <g font-family="'Segoe Print','Bradley Hand','Comic Sans MS',cursive" font-size="17" fill="#2a2d31">
+    <text x="48" y="778">1. roof door slides back    2. arm reaches out + extends down to grab the cargo</text>
+    <text x="48" y="802">3. lifts it and swings back over the roof    4. lowers it through the opening onto the conveyor</text>
+  </g>
+</svg>

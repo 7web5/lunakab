@@ -1,0 +1,113 @@
+/* ================================================================
+   RESEARCH PAGE — three category buttons, one panel each.
+   Builds on style.css + problem.css (shared doc-page layout).
+   ================================================================ */
+
+.doc-narrow { padding-left: 8vw; }
+.doc-narrow .doc-hero { margin-bottom: 7vh; }
+.r-summary {
+  max-width: 68ch; margin-bottom: 1.6rem; padding-left: 1.1rem;
+  border-left: 1px solid var(--signal);
+  font-size: clamp(0.98rem, 1.5vw, 1.08rem); line-height: 1.8; font-weight: 300; color: var(--white);
+}
+
+.r-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 8vh; }
+.r-tab {
+  position: relative; cursor: pointer; text-align: left;
+  display: flex; flex-direction: column; gap: 0.6rem;
+  min-height: 190px; padding: 1.4rem 1.4rem 1.5rem;
+  font: inherit; color: var(--white);
+  background: var(--panel); backdrop-filter: blur(6px);
+  border: 1px solid var(--line-soft);
+  transition: border-color 0.3s, background 0.3s, transform 0.35s var(--ease);
+}
+.r-tab:hover { border-color: var(--line); background: rgba(159,199,216,0.05); transform: translateY(-2px); }
+.r-tab[aria-selected="true"] { border-color: var(--signal); background: rgba(159,199,216,0.08); }
+.r-tab:focus-visible { outline: 1px solid var(--signal); outline-offset: 3px; }
+.r-n { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.22em; color: var(--signal); }
+.r-l { font-size: clamp(1.15rem, 2vw, 1.45rem); letter-spacing: 0.06em; text-transform: uppercase; margin-top: auto; }
+.r-d { font-size: 0.85rem; line-height: 1.55; font-weight: 300; color: var(--dim); }
+.r-arrow {
+  position: absolute; top: 1.2rem; right: 1.3rem;
+  font-family: var(--mono); color: var(--faint); transition: transform 0.35s var(--ease), color 0.3s;
+}
+.r-tab:hover .r-arrow, .r-tab[aria-selected="true"] .r-arrow { color: var(--signal); transform: translateX(4px); }
+
+.r-panel { margin-bottom: 10vh; scroll-margin-top: 110px; opacity: 0; transform: translateY(14px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+.r-panel.in { opacity: 1; transform: none; }
+.r-panel h2 {
+  display: flex; align-items: baseline; gap: 1rem;
+  font-weight: 400; font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding-bottom: 1.1rem; margin-bottom: 1.8rem; border-bottom: 1px solid var(--line);
+}
+.r-panel h2 i { font-style: normal; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; color: var(--signal); }
+.r-empty {
+  font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--faint);
+  padding: 2.4rem 1.4rem; text-align: center; border: 1px dashed var(--line-soft);
+}
+
+/* ---------- source cards (click → pop-up) ---------- */
+.sources { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.src {
+  position: relative; display: flex; flex-direction: column; gap: 0.6rem;
+  padding: 1.2rem 1.3rem 1.25rem;
+  background: var(--panel); backdrop-filter: blur(6px); border: 1px solid var(--line-soft);
+  transition: border-color 0.3s, background 0.3s;
+}
+.src:hover, .src:focus-within { border-color: var(--signal); background: rgba(159,199,216,0.06); }
+.src::after {
+  content: "+"; position: absolute; top: 1rem; right: 1.2rem;
+  font-family: var(--mono); font-size: 0.9rem; color: var(--faint); transition: color 0.3s, transform 0.35s var(--ease);
+}
+.src:hover::after { color: var(--white); transform: rotate(90deg); }
+.src h3 { font-weight: 500; font-size: 1rem; letter-spacing: 0.03em; line-height: 1.35; padding-right: 1.4rem; }
+.src:has(.m-open:focus-visible) { outline: 1px solid var(--signal); outline-offset: 3px; }
+.src-meta { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faint); }
+.src-body { display: none; } /* shown in the pop-up */
+
+/* pop-up body: longer than a mission, so it scrolls inside */
+.src-dialog { width: min(680px, calc(100vw - 32px)); }
+.src-dialog h4 { margin-bottom: 0.5rem; padding-bottom: 0; border-bottom: 0; }
+.src-dialog > .src-meta { display: block; padding-bottom: 1rem; margin-bottom: 0.4rem; border-bottom: 1px solid var(--line-soft); }
+.md-body { max-height: min(56vh, 520px); overflow-y: auto; padding-right: 0.6rem; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.md-body h5 {
+  font-family: var(--mono); font-weight: 400; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--signal); margin: 1.4rem 0 0.55rem;
+}
+.md-body p { font-size: 0.95rem; }
+.md-body .cite { color: var(--white); font-size: 0.9rem; }
+.md-body em { font-style: italic; }
+.src-figs { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
+.src-figs figure { min-width: 0; }
+.src-figs img {
+  display: block; width: 100%; height: 200px; object-fit: contain;
+  background: #fff; padding: 8px; border: 1px solid var(--line-soft);
+}
+.src-figs img.photo { height: 160px; padding: 0; object-fit: cover; background: var(--void); }
+.src-figs figure:only-child img { height: auto; max-height: 340px; }
+.src-figs figcaption {
+  margin-top: 0.45rem; font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--faint);
+}
+.src-link, .src-pdf {
+  display: inline-block; margin-top: 0.5rem;
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; color: var(--signal);
+  text-decoration: none; word-break: break-all;
+}
+.src-link:hover, .src-pdf:hover { color: var(--white); }
+.src-pdf {
+  margin-top: 1.6rem; padding: 0.65rem 0.9rem; letter-spacing: 0.2em; text-transform: uppercase;
+  border: 1px solid var(--line); color: var(--white); word-break: normal;
+}
+.src-pdf:hover { border-color: var(--signal); }
+
+@media (max-width: 760px) {
+  .sources { grid-template-columns: 1fr; }
+  .r-tabs { grid-template-columns: 1fr; }
+  .r-tab { min-height: 0; }
+  .r-l { margin-top: 0.4rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .r-panel { opacity: 1; transform: none; transition: none; }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <title>LunaKAB — Subsystems</title>
+  <meta name="description" content="Inspect the eight subsystems of the LunaKAB cargo transport robot." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/subsystems.css" />
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body class="sys-page">
+  <canvas id="scene"></canvas>
+  <div id="vignette" aria-hidden="true"></div>
+  <div id="scanline" aria-hidden="true"></div>
+  <div id="veil" aria-hidden="true"></div>
+
+  <!-- Hover label that follows the cursor over the robot -->
+  <div id="sys-tip" aria-hidden="true"></div>
+
+  <div id="sys-hud">
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+
+    <header class="sys-top">
+      <a class="mark" href="index.html#engineering" aria-label="Back to the mission">
+        <img class="mark-icon" src="assets/logo-mark.svg" alt="" />
+        <span class="mark-text">
+          <span class="mark-title">LUNA<span class="kab">KAB</span></span>
+          <span class="mark-sub">NASA HUNCH</span>
+        </span>
+      </a>
+      <a class="sys-back" href="index.html#engineering"><span aria-hidden="true">←</span> RETURN TO MISSION</a>
+    </header>
+
+    <div class="sys-intro">
+      <span class="eyebrow">07 / ENGINEERING · SUBSYSTEMS</span>
+      <h1>R-00 CARGO TRANSPORT</h1>
+      <p class="sys-hint"><span class="pointer-fine">Click any part of the robot</span><span class="pointer-coarse">Tap any part of the robot</span> · drag to orbit</p>
+    </div>
+
+    <nav id="sys-list" aria-label="Subsystems"></nav>
+  </div>
+
+  <aside id="sys-card" class="sys-card" aria-hidden="true" aria-labelledby="c-title">
+    <div class="card-head">
+      <span class="card-index" id="c-index"></span>
+      <button id="c-close" type="button" aria-label="Close">✕</button>
+    </div>
+    <figure class="card-fig">
+      <img id="c-img" alt="" />
+      <figcaption id="c-cap"></figcaption>
+    </figure>
+    <h2 id="c-title"></h2>
+    <p id="c-body"></p>
+    <div class="card-spec" id="c-spec"></div>
+    <div class="card-nav">
+      <button id="c-prev" type="button">← PREV</button>
+      <button id="c-next" type="button">NEXT →</button>
+    </div>
+  </aside>
+
+  <noscript>
+    <div style="position:fixed;inset:0;display:grid;place-items:center;background:#000;color:#fff;font-family:sans-serif;text-align:center;padding:2rem;">
+      This inspection view requires JavaScript and WebGL.
+    </div>
+  </noscript>
+
+  <script type="module" src="js/subsystems.js"></script>
+</body>
+</html>

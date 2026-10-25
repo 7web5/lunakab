@@ -1,0 +1,203 @@
+/* ================================================================
+   PROBLEM PAGE — a scrolling mission brief.
+   Builds on the tokens and HUD pieces in style.css.
+   ================================================================ */
+
+body.doc-page {
+  background:
+    radial-gradient(90% 60% at 70% -10%, rgba(159,199,216,0.07), transparent 60%),
+    var(--void);
+  background-attachment: fixed;
+}
+body.doc-page .corner { z-index: 30; }
+#stars { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 110px; }
+
+/* ---------- top bar ---------- */
+.doc-top {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 25;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 30px 34px 22px;
+  background: linear-gradient(to bottom, rgba(3,4,6,0.92) 40%, transparent);
+}
+.doc-top .mark { color: var(--white); text-decoration: none; }
+.doc-back {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.26em;
+  color: var(--dim); text-decoration: none;
+  border: 1px solid var(--line-soft); padding: 0.55rem 0.9rem;
+  background: var(--panel); backdrop-filter: blur(6px);
+  transition: color 0.3s, border-color 0.3s;
+}
+.doc-back:hover { color: var(--white); border-color: var(--signal); }
+
+/* ---------- table of contents (left rail, mirrors #nav) ---------- */
+.doc-toc {
+  position: fixed; left: 34px; top: 50%; transform: translateY(-50%); z-index: 20;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.doc-toc a {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.24em;
+  color: var(--faint); text-decoration: none; transition: color 0.4s var(--ease);
+}
+.doc-toc a::before { content: ""; width: 6px; height: 1px; background: var(--faint); transition: all 0.4s var(--ease); }
+.doc-toc a i { font-style: normal; font-size: 0.56rem; }
+.doc-toc a:hover, .doc-toc a.active { color: var(--white); }
+.doc-toc a.active::before { width: 16px; background: var(--signal); }
+
+/* ---------- document column ---------- */
+.doc {
+  position: relative; z-index: 10;
+  max-width: 980px; margin: 0 auto;
+  padding: 22vh 8vw 14vh calc(8vw + 120px);
+}
+
+.doc-hero, .doc-sec, .mission {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.doc-hero.in, .doc-sec.in, .mission.in { opacity: 1; transform: none; }
+
+.doc-hero { margin-bottom: 18vh; }
+.doc-hero h1 {
+  font-weight: 400; font-size: clamp(2rem, 5.4vw, 3.8rem);
+  letter-spacing: 0.07em; line-height: 1.05; text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.lede {
+  font-size: clamp(1rem, 1.7vw, 1.2rem); line-height: 1.75; font-weight: 300;
+  color: var(--dim); max-width: 58ch;
+}
+
+.facts {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 3rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line-soft);
+}
+.facts div { padding: 1.1rem 1.2rem 1.2rem 0; }
+.facts div + div { padding-left: 1.2rem; border-left: 1px solid var(--line-soft); }
+.facts dt { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.28em; color: var(--faint); text-transform: uppercase; margin-bottom: 0.5rem; }
+.facts dd { font-size: 0.95rem; color: var(--white); }
+
+/* ---------- sections ---------- */
+.doc-sec { margin-bottom: 14vh; }
+.doc-sec h2 {
+  display: flex; align-items: baseline; gap: 1rem;
+  font-weight: 400; font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding-bottom: 1.1rem; margin-bottom: 1.8rem;
+  border-bottom: 1px solid var(--line);
+}
+.doc-sec h2 i { font-style: normal; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; color: var(--signal); }
+
+.client { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.client li {
+  display: flex; flex-direction: column; gap: 0.35rem;
+  padding: 1.2rem 1.3rem; background: var(--panel); border: 1px solid var(--line-soft);
+}
+.client span { font-size: 1.1rem; letter-spacing: 0.06em; }
+.client small { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.22em; color: var(--dim); text-transform: uppercase; }
+
+.spec { list-style: none; counter-reset: spec; }
+.spec li {
+  counter-increment: spec;
+  display: grid; grid-template-columns: 3.2rem 1fr; align-items: baseline;
+  padding: 1rem 0; border-bottom: 1px solid var(--line-soft);
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem); line-height: 1.6; font-weight: 300; color: var(--white);
+}
+.spec li::before {
+  content: counter(spec, decimal-leading-zero);
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; color: var(--signal);
+}
+.spec.caution li::before { color: var(--caution); }
+
+/* ---------- missions ---------- */
+.tier {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--mono); font-weight: 400; font-size: 0.68rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--white);
+  margin: 2.6rem 0 1.2rem;
+}
+.tier:first-of-type { margin-top: 0; }
+.tier span { color: var(--faint); font-size: 0.58rem; }
+.tier::before { content: "▸ "; color: var(--signal); }
+.tier.adv::before { color: var(--caution); }
+
+.missions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.mission {
+  position: relative;
+  display: flex; flex-direction: column; gap: 0.7rem;
+  padding: 1.1rem 1.2rem 1.2rem;
+  background: var(--panel); backdrop-filter: blur(6px);
+  border: 1px solid var(--line-soft);
+  transition: border-color 0.3s, background 0.3s, opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.mission:hover, .mission:focus-within { border-color: var(--signal); background: rgba(159,199,216,0.06); }
+.tier.adv + .missions .mission:hover, .tier.adv + .missions .mission:focus-within { border-color: var(--caution); background: rgba(214,154,84,0.06); }
+.mission::after {
+  content: "+"; position: absolute; top: 0.9rem; right: 1.1rem;
+  font-family: var(--mono); font-size: 0.9rem; color: var(--faint); transition: color 0.3s, transform 0.35s var(--ease);
+}
+.mission:hover::after { color: var(--white); transform: rotate(90deg); }
+.m-n { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.22em; color: var(--signal); }
+.tier.adv + .missions .m-n, .m-dialog.adv .m-n { color: var(--caution); }
+.mission h4 { font-weight: 500; font-size: 0.98rem; letter-spacing: 0.03em; line-height: 1.35; }
+.m-open {
+  all: unset; cursor: pointer; text-align: left;
+}
+.m-open::before { content: ""; position: absolute; inset: 0; } /* whole card is the click target */
+.m-open:focus-visible { outline: none; }
+.mission:has(.m-open:focus-visible) { outline: 1px solid var(--signal); outline-offset: 3px; }
+.mission p { display: none; } /* shown in the pop-up */
+
+/* ---------- mission pop-up ---------- */
+.m-dialog {
+  margin: auto; width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 48px);
+  padding: 1.6rem 1.7rem 1.4rem;
+  color: var(--white); background: rgba(8, 10, 12, 0.92); backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+}
+.m-dialog[open] { animation: md-in 0.35s var(--ease); }
+.m-dialog::backdrop { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(3px); }
+@keyframes md-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.md-head { display: flex; justify-content: space-between; align-items: center; }
+.md-close {
+  background: none; border: 1px solid var(--line-soft); color: var(--dim); cursor: pointer;
+  width: 30px; height: 30px; font-size: 0.75rem; transition: color 0.3s, border-color 0.3s;
+}
+.md-close:hover { color: var(--white); border-color: var(--signal); }
+.m-dialog h4 {
+  font-weight: 400; font-size: clamp(1.25rem, 3vw, 1.6rem); letter-spacing: 0.05em; line-height: 1.25;
+  margin: 1rem 0 1.1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line-soft);
+}
+.m-dialog p { font-size: 0.98rem; line-height: 1.75; font-weight: 300; color: var(--dim); }
+.m-dialog strong { font-weight: 500; color: var(--white); }
+.md-nav { display: flex; justify-content: space-between; margin-top: 1.6rem; }
+.md-nav button {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.24em; color: var(--dim); cursor: pointer;
+  background: none; border: 1px solid var(--line-soft); padding: 0.6rem 0.9rem; transition: color 0.3s, border-color 0.3s;
+}
+.md-nav button:hover { color: var(--white); border-color: var(--signal); }
+
+.doc-foot { padding-top: 4vh; text-align: center; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 960px) {
+  .doc-toc { display: none; }
+  .doc { padding-left: 8vw; }
+  .missions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  .doc-top { padding: 22px 16px 18px; }
+  .doc { padding: 18vh 16px 12vh; }
+  .facts { grid-template-columns: 1fr; }
+  .facts div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line-soft); }
+  .client, .missions { grid-template-columns: 1fr; }
+  .m-dialog { padding: 1.3rem 1.2rem 1.1rem; }
+  .spec li { grid-template-columns: 2.4rem 1fr; }
+  .corner, #scanline { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .doc-hero, .doc-sec, .mission { opacity: 1; transform: none; transition: none; }
+}

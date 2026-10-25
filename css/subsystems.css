@@ -1,0 +1,162 @@
+/* ================================================================
+   SUBSYSTEMS PAGE — robot on the surface, click a part to inspect it.
+   Builds on the tokens and HUD pieces in style.css.
+   ================================================================ */
+
+body.sys-page { overflow: hidden; height: 100vh; height: 100dvh; }
+body.sys-page #scene { touch-action: none; cursor: grab; }
+body.sys-page #scene:active { cursor: grabbing; }
+body.sys-page #scene.over-part { cursor: pointer; }
+
+#veil {
+  position: fixed; inset: 0; z-index: 50; background: #000; pointer-events: none;
+  transition: opacity 1.4s var(--ease);
+}
+#veil.off { opacity: 0; }
+
+#sys-hud { position: fixed; inset: 0; z-index: 20; pointer-events: none; }
+#sys-hud a, #sys-hud button { pointer-events: auto; }
+
+.sys-top {
+  position: fixed; top: 30px; left: 34px; right: 34px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.sys-top .mark { color: var(--white); text-decoration: none; }
+.sys-back {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.26em;
+  color: var(--dim); text-decoration: none;
+  border: 1px solid var(--line-soft); padding: 0.55rem 0.9rem;
+  background: var(--panel); backdrop-filter: blur(6px);
+  transition: color 0.3s, border-color 0.3s;
+}
+.sys-back:hover { color: var(--white); border-color: var(--signal); }
+
+.sys-intro { position: fixed; top: 104px; left: 34px; max-width: 420px; }
+.sys-intro .eyebrow { margin-bottom: 0.9rem; }
+.sys-intro h1 {
+  font-weight: 400; font-size: clamp(1.4rem, 3vw, 2.2rem);
+  letter-spacing: 0.08em; line-height: 1.1;
+}
+.sys-hint {
+  margin-top: 0.9rem;
+  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.26em; color: var(--faint); text-transform: uppercase;
+}
+.pointer-coarse { display: none; }
+@media (pointer: coarse) { .pointer-fine { display: none; } .pointer-coarse { display: inline; } }
+
+/* ---------- subsystem index (left rail) ---------- */
+#sys-list {
+  position: fixed; left: 34px; top: 54%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.sys-item {
+  pointer-events: auto; cursor: pointer;
+  display: flex; align-items: center; gap: 0.8rem;
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--dim); background: var(--panel); backdrop-filter: blur(6px);
+  border: 1px solid var(--line-soft); padding: 0.62rem 0.9rem;
+  text-align: left; white-space: nowrap;
+  transition: color 0.3s, border-color 0.3s, background 0.3s;
+}
+.sys-item i { font-style: normal; color: var(--faint); font-size: 0.56rem; letter-spacing: 0.12em; }
+.sys-item:hover, .sys-item.hover { color: var(--white); border-color: var(--line); }
+.sys-item.active { color: var(--white); border-color: var(--signal); background: rgba(159,199,216,0.07); }
+.sys-item.active i { color: var(--signal); }
+.sys-item:focus-visible { outline: 1px solid var(--signal); outline-offset: 2px; }
+
+/* ---------- hover tooltip ---------- */
+#sys-tip {
+  position: fixed; left: 0; top: 0; z-index: 30; pointer-events: none;
+  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.22em; color: var(--white);
+  background: rgba(4,6,8,0.82); border: 1px solid var(--line); padding: 0.45rem 0.7rem;
+  white-space: nowrap; opacity: 0; transition: opacity 0.2s;
+}
+#sys-tip.show { opacity: 1; }
+#sys-tip b { color: var(--signal); font-weight: 400; margin-right: 0.6em; }
+
+/* ---------- detail card ---------- */
+.sys-card {
+  position: fixed; z-index: 25;
+  top: 92px; right: 34px; bottom: 34px;
+  width: min(400px, calc(100vw - 68px));
+  overflow-y: auto; overscroll-behavior: contain;
+  background: rgba(5, 7, 10, 0.86);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  padding: 1.3rem 1.4rem 1.4rem;
+  opacity: 0; transform: translateX(24px); pointer-events: none;
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+}
+.sys-card.open { opacity: 1; transform: none; pointer-events: auto; }
+
+.card-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.card-index { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.3em; color: var(--signal); }
+#c-close {
+  cursor: pointer; background: none; color: var(--dim);
+  border: 1px solid var(--line-soft); width: 30px; height: 30px; font-size: 0.75rem;
+  transition: color 0.3s, border-color 0.3s;
+}
+#c-close:hover { color: var(--white); border-color: var(--line); }
+
+.card-fig { margin: 0 0 1.2rem; border: 1px solid var(--line-soft); background: #05070a; }
+.card-fig img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.card-fig figcaption {
+  font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.22em; color: var(--faint);
+  padding: 0.55rem 0.7rem; border-top: 1px solid var(--line-soft);
+}
+
+.sys-card h2 {
+  font-weight: 400; font-size: 1.35rem; letter-spacing: 0.06em; text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+.sys-card p { color: var(--dim); font-weight: 300; line-height: 1.7; font-size: 0.92rem; }
+
+.card-spec {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem;
+  margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--line-soft);
+}
+.card-spec div { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.card-spec .k { font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.22em; color: var(--faint); }
+.card-spec .v { font-family: var(--mono); font-size: 0.76rem; color: var(--white); }
+
+.card-nav { display: flex; justify-content: space-between; gap: 0.6rem; margin-top: 1.4rem; }
+.card-nav button {
+  flex: 1; cursor: pointer;
+  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.24em; color: var(--dim);
+  background: none; border: 1px solid var(--line-soft); padding: 0.7rem 0.6rem;
+  transition: color 0.3s, border-color 0.3s;
+}
+.card-nav button:hover { color: var(--white); border-color: var(--signal); }
+
+/* ================================================================
+   RESPONSIVE — list becomes a bottom strip, card a bottom sheet
+   ================================================================ */
+@media (max-width: 820px) {
+  .sys-top { top: 22px; left: 16px; right: 16px; }
+  .sys-back { font-size: 0.54rem; padding: 0.5rem 0.7rem; }
+  .sys-intro { top: 80px; left: 16px; right: 16px; }
+  .sys-intro .eyebrow { font-size: 0.54rem; letter-spacing: 0.3em; }
+  .sys-intro { transition: opacity 0.4s var(--ease); }
+  body.card-open .sys-intro { opacity: 0; }
+
+  #sys-list {
+    top: auto; bottom: 18px; left: 0; right: 0; transform: none;
+    flex-direction: row; overflow-x: auto; padding: 0 16px; gap: 6px;
+    scrollbar-width: none;
+  }
+  #sys-list::-webkit-scrollbar { display: none; }
+  .sys-item { flex: none; }
+
+  .sys-card {
+    top: auto; left: 0; right: 0; bottom: 0; width: auto;
+    max-height: 62vh; max-height: 62dvh;
+    border-left: 0; border-right: 0; border-bottom: 0;
+    padding: 1rem 16px calc(1.2rem + env(safe-area-inset-bottom));
+    transform: translateY(30px);
+  }
+  .card-fig img { aspect-ratio: 16 / 9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sys-card, #veil { transition: none; }
+}

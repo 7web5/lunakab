@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 104" fill="none">
+  <title>LunaKAB</title>
+  <defs>
+    <mask id="crescent" maskUnits="userSpaceOnUse">
+      <rect width="124" height="104" fill="#fff"/>
+      <circle cx="78" cy="40" r="32" fill="#000"/>
+    </mask>
+    <clipPath id="front" clipPathUnits="userSpaceOnUse">
+      <rect x="0" y="54" width="124" height="50"/>
+    </clipPath>
+  </defs>
+  <!-- orbit, far side -->
+  <ellipse cx="62" cy="54" rx="58" ry="15" transform="rotate(-18 62 54)" stroke="#6fa3c8" stroke-width="3" opacity="0.55"/>
+  <!-- crescent moon -->
+  <circle cx="60" cy="52" r="36" fill="#d3d7dc" mask="url(#crescent)"/>
+  <circle cx="40" cy="62" r="4.2" fill="#8d949b"/>
+  <circle cx="50" cy="76" r="2.6" fill="#8d949b"/>
+  <circle cx="32" cy="47" r="2" fill="#8d949b"/>
+  <!-- orbit, near side passes in front of the moon -->
+  <g transform="rotate(-18 62 54)">
+    <ellipse cx="62" cy="54" rx="58" ry="15" stroke="#6fa3c8" stroke-width="3" clip-path="url(#front)"/>
+  </g>
+</svg>
