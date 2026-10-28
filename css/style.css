@@ -22,6 +22,18 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* full-screen toggle (js/fullscreen.js), top-centre on every page */
+#fs-toggle {
+  position: fixed; top: 30px; left: 50%; transform: translateX(-50%); z-index: 60;
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.26em;
+  color: var(--dim); background: var(--panel); backdrop-filter: blur(6px);
+  border: 1px solid var(--line-soft); padding: 0.55rem 0.9rem; cursor: pointer;
+  transition: color 0.3s, border-color 0.3s;
+}
+#fs-toggle:hover, #fs-toggle:focus-visible { color: var(--white); border-color: var(--signal); outline: none; }
+#fs-toggle.resume { color: var(--signal); border-color: var(--signal); }
+@media (max-width: 760px) { #fs-toggle { display: none; } }
+
 html { scroll-behavior: auto; }
 
 body {
