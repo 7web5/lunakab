@@ -64,6 +64,11 @@
 
     <section class="r-panel" role="tabpanel" id="videos" aria-labelledby="tab-videos" hidden>
       <h2><i>A</i>Videos</h2>
+      <a class="cta" href="https://drive.google.com/drive/folders/1NjJWEZDeu6dzhPK92JLVRI5XJgNoekP9?usp=sharing" target="_blank" rel="noopener">
+        <span class="cta-n">▶</span>
+        <span class="cta-l">WATCH OUR VIDEOS ON GOOGLE DRIVE</span>
+        <span class="cta-arrow" aria-hidden="true">↗</span>
+      </a>
       <div class="gallery media-list" data-list="videos"></div>
     </section>
 
@@ -130,7 +135,8 @@
       document.querySelectorAll(".media-list").forEach((el) => {
         const key = el.dataset.list, items = MEDIA[key];
         if (!items.length) {
-          el.innerHTML = `<p class="r-empty">${key === "videos" ? "Videos" : "Brochure"} coming soon</p>`;
+          // Videos live in the Google Drive folder linked above the list.
+          if (key !== "videos") el.innerHTML = `<p class="r-empty">Brochure coming soon</p>`;
           return;
         }
         items.forEach((d, i) => {
