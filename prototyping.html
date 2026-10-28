@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <title>LunaKAB — Prototyping</title>
+  <meta name="description" content="LunaKAB prototyping: photos of the build, from the first frame to the third iteration." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/problem.css" />
+  <link rel="stylesheet" href="css/research.css" />
+  <link rel="stylesheet" href="css/designs.css" />
+</head>
+<body class="doc-page">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div id="vignette" aria-hidden="true"></div>
+  <div id="scanline" aria-hidden="true"></div>
+  <span class="corner tl"></span><span class="corner tr"></span>
+  <span class="corner bl"></span><span class="corner br"></span>
+
+  <header class="doc-top">
+    <a class="mark" href="index.html#prototyping" aria-label="Back to the mission">
+      <img class="mark-icon" src="assets/logo-mark.svg" alt="" />
+      <span class="mark-text">
+        <span class="mark-title">LUNA<span class="kab">KAB</span></span>
+        <span class="mark-sub">NASA HUNCH</span>
+      </span>
+    </a>
+    <a class="doc-back" href="index.html#prototyping"><span aria-hidden="true">←</span> RETURN TO MISSION</a>
+  </header>
+
+  <main class="doc doc-narrow">
+    <section class="doc-hero">
+      <span class="eyebrow">05 / PROTOTYPING</span>
+      <h1>Prototyping</h1>
+      <p class="lede">Building the LunaKAB — from the first frame to the third iteration. Choose a category to explore.</p>
+    </section>
+
+    <div class="r-tabs d-tabs" role="tablist" aria-label="Prototyping categories">
+      <button class="r-tab" role="tab" id="tab-images" aria-controls="images" aria-selected="false" data-key="images">
+        <span class="r-n">A</span>
+        <span class="r-l">Images</span>
+        <span class="r-d">Photos of each build iteration and of the arm, door and conveyor belt</span>
+        <span class="r-arrow" aria-hidden="true">→</span>
+      </button>
+    </div>
+
+    <section class="r-panel" role="tabpanel" id="images" aria-labelledby="tab-images" hidden>
+      <h2><i>A</i>Images</h2>
+      <div class="gallery" data-gallery="images"></div>
+    </section>
+
+    <footer class="doc-foot">
+      <a class="cta" href="index.html#prototyping">
+        <span class="cta-n">←</span>
+        <span class="cta-l">RETURN TO MISSION</span>
+      </a>
+    </footer>
+  </main>
+
+  <dialog id="lightbox" class="m-dialog lightbox" aria-labelledby="lb-title">
+    <div class="md-head">
+      <span class="m-n" id="lb-n"></span>
+      <button type="button" class="md-close" id="lb-close" aria-label="Close">✕</button>
+    </div>
+    <img id="lb-img" alt="" />
+    <h4 id="lb-title"></h4>
+    <p class="lb-note" id="lb-note"></p>
+    <dl class="lb-specs" id="lb-specs"></dl>
+    <div class="md-nav">
+      <button type="button" id="lb-prev">← PREV</button>
+      <button type="button" id="lb-next">NEXT →</button>
+    </div>
+  </dialog>
+
+  <script src="js/stars.js"></script>
+  <script>
+    // Gallery contents. Files live in docs/prototyping/images/. `note` and
+    // `specs` ([label, value] rows) are optional.
+    const PHOTOS = {
+      images: [
+        {
+          src: "docs/prototyping/images/build-oct-10.jpg",
+          title: "Build — Oct. 10",
+          note: "The first frame: two tall side walls of perforated metal joined by a base plate, on four wheels.",
+          specs: [["DATE", "OCT. 10"], ["STAGE", "FIRST BUILD"]],
+        },
+        {
+          src: "docs/prototyping/images/iteration-1-oct-17.jpg",
+          title: "First Iteration — Oct. 17",
+          note: "The frame rebuilt as a closed box with a top and bottom deck, ready for the arm and conveyor.",
+          specs: [["DATE", "OCT. 17"], ["STAGE", "ITERATION 1"]],
+        },
+        {
+          src: "docs/prototyping/images/iteration-2-oct-20.jpg",
+          title: "Second Iteration — Oct. 20",
+          note: "A black frame with the internal mounts and wiring going in.",
+          specs: [["DATE", "OCT. 20"], ["STAGE", "ITERATION 2"]],
+        },
+        {
+          src: "docs/prototyping/images/iteration-3-oct-25.jpg",
+          title: "Third Iteration — Oct. 25",
+          note: "The latest build, with the arm upright at the side, the felt conveyor belt inside and the electronics mounted.",
+          specs: [["DATE", "OCT. 25"], ["STAGE", "ITERATION 3"]],
+        },
+        {
+          src: "docs/prototyping/images/arm-1.jpg",
+          title: "Arm — Top-Mounted Claw",
+          note: "The first arm idea had the claw extend from the top of the robot to drop the cargo in. It was too complex and not feasible because of the size of the arm, so the arm was changed to move horizontally.",
+          specs: [["PART", "ARM"], ["STATUS", "CHANGED"]],
+        },
+        {
+          src: "docs/prototyping/images/arm-2.jpg",
+          title: "Arm — Horizontal",
+          note: "The arm reworked to move horizontally across the robot instead of reaching down from the top.",
+          specs: [["PART", "ARM"], ["MOTION", "HORIZONTAL"]],
+        },
+        {
+          src: "docs/prototyping/images/door-1.jpg",
+          title: "Door — CAD Sliding Door",
+          note: "The CAD-modelled sliding door would not stay properly aligned with the back of the robot.",
+          specs: [["PART", "DOOR"], ["STATUS", "CHANGED"]],
+        },
+        {
+          src: "docs/prototyping/images/door-2.jpg",
+          title: "Door — VEX Sliding Door",
+          note: "The replacement: a left-to-right sliding door built from VEX pieces.",
+          specs: [["PART", "DOOR"], ["BUILD", "VEX"], ["MOTION", "LEFT TO RIGHT"]],
+        },
+        {
+          src: "docs/prototyping/images/conveyor-belt.jpg",
+          title: "Conveyor Belt",
+          note: "A conveyor belt made of felt that moves the cargo from the front, where the arm drops it, to the back, where it is pushed out to the habitat.",
+          specs: [["PART", "CONVEYOR"], ["MATERIAL", "FELT"]],
+        },
+      ],
+    };
+
+    // Build each gallery; clicking a figure opens the lightbox, prev/next stay in that gallery.
+    (() => {
+      const $ = (id) => document.getElementById(id);
+      const dlg = $("lightbox");
+      let group = [], cur = 0;
+      const show = (i) => {
+        cur = (i + group.length) % group.length;
+        const d = group[cur];
+        $("lb-n").textContent = `PHOTO ${String(cur + 1).padStart(2, "0")} / ${String(group.length).padStart(2, "0")}`;
+        $("lb-img").src = d.src;
+        $("lb-img").alt = d.title;
+        $("lb-title").textContent = d.title;
+        $("lb-note").textContent = d.note || "";
+        $("lb-note").hidden = !d.note;
+        const specs = $("lb-specs");
+        specs.replaceChildren(...(d.specs || []).map(([k, v]) => {
+          const row = document.createElement("div"), dt = document.createElement("dt"), dd = document.createElement("dd");
+          dt.textContent = k; dd.textContent = v; row.append(dt, dd); return row;
+        }));
+        specs.hidden = !d.specs;
+        if (!dlg.open) dlg.showModal();
+      };
+      document.querySelectorAll(".gallery").forEach((el) => {
+        const items = PHOTOS[el.dataset.gallery];
+        if (!items.length) {
+          el.innerHTML = `<p class="r-empty">Images coming soon</p>`;
+          return;
+        }
+        items.forEach((d, i) => {
+          const fig = document.createElement("figure");
+          fig.className = "g-item";
+          fig.innerHTML = `<button type="button" class="g-open"><img loading="lazy" alt=""></button>
+            <figcaption><span class="m-n">PHOTO ${String(i + 1).padStart(2, "0")}</span><span class="g-title"></span><span class="g-note"></span></figcaption>`;
+          fig.querySelector("img").src = d.src;
+          fig.querySelector("img").alt = d.title;
+          fig.querySelector(".g-title").textContent = d.title;
+          fig.querySelector(".g-note").textContent = d.specs ? d.specs.slice(0, 3).map((s) => s[1]).join(" · ") : "";
+          fig.querySelector(".g-open").addEventListener("click", () => { group = items; show(i); });
+          el.appendChild(fig);
+        });
+      });
+      $("lb-close").addEventListener("click", () => dlg.close());
+      $("lb-prev").addEventListener("click", () => show(cur - 1));
+      $("lb-next").addEventListener("click", () => show(cur + 1));
+      dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+      dlg.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") show(cur + 1);
+        if (e.key === "ArrowLeft") show(cur - 1);
+      });
+    })();
+  </script>
+  <script>
+    // Category buttons: show one panel at a time; the URL hash remembers the choice.
+    (() => {
+      const tabs = [...document.querySelectorAll(".r-tab")];
+      const select = (key, scroll) => {
+        for (const t of tabs) {
+          const on = t.dataset.key === key;
+          t.setAttribute("aria-selected", on);
+          const panel = document.getElementById(t.dataset.key);
+          panel.hidden = !on;
+          if (on) {
+            panel.classList.remove("in"); void panel.offsetWidth; panel.classList.add("in");
+            if (scroll) panel.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
+        history.replaceState(null, "", "#" + key);
+      };
+      tabs.forEach((t) => t.addEventListener("click", () => select(t.dataset.key, true)));
+      const start = location.hash.slice(1);
+      if (tabs.some((t) => t.dataset.key === start)) select(start, false);
+
+      const hero = document.querySelector(".doc-hero");
+      requestAnimationFrame(() => hero.classList.add("in"));
+    })();
+  </script>
+</body>
+</html>

@@ -45,7 +45,7 @@ class App {
     addEventListener("scroll", () => this._onScroll(), { passive: true });
 
     // Arriving back from a detail page: skip the intro and land on its section.
-    const RETURN = { "#problem": 1, "#research": 2, "#designs": 3, "#lunakab": 5, "#engineering": SHOTS.findIndex((s) => s.orbit) };
+    const RETURN = { "#problem": 1, "#research": 2, "#designs": 3, "#prototyping": 4, "#lunakab": 5, "#engineering": SHOTS.findIndex((s) => s.orbit) };
     const returnTo = RETURN[location.hash];
     this.iface.runBoot(() => { /* HUD revealed inside */ }, { instant: returnTo !== undefined });
     if (returnTo !== undefined) {

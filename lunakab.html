@@ -120,8 +120,8 @@
         // { embed: "https://www.youtube.com/embed/VIDEO_ID", title: "Demo" },
       ],
       brochure: [
-        // { src: "docs/lunakab/brochure/brochure.pdf", title: "LunaKAB brochure" },
-        // { src: "docs/lunakab/brochure/page-1.jpg", title: "Page 1" },
+        { src: "docs/lunakab/brochure/page-1-outside.png", title: "Outside — Overview, QR Code & Cover", note: "The problem, constraints and mission list, a QR code to learn more, and the LunaKAB cover." },
+        { src: "docs/lunakab/brochure/page-2-inside.png", title: "Inside — Research, Build & Components", note: "Key research findings, our design solution sketches and models, the build from Oct. 10 to Oct. 25, and the arm, door and conveyor belt." },
       ],
     };
 
@@ -148,8 +148,12 @@
             media = document.createElement("iframe");
             media.src = d.src; media.title = d.title;
           } else {
-            media = document.createElement("img");
-            media.src = d.src; media.alt = d.title; media.loading = "lazy";
+            const img = document.createElement("img");
+            img.src = d.src; img.alt = d.title; img.loading = "lazy";
+            // Brochure pages are dense, so the thumbnail opens the full-size page.
+            media = document.createElement("a");
+            media.href = d.src; media.target = "_blank"; media.rel = "noopener";
+            media.appendChild(img);
           }
           fig.appendChild(media);
           const cap = document.createElement("figcaption");
